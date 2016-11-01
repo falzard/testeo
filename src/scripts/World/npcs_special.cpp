@@ -768,7 +768,7 @@ enum LunaclawSpirit
     TEXT_ID_PROGRESS        = 4715
 };
 
-#define GOSSIP_ITEM_GRANT   "You have thought well, spirit. I ask you to grant me the strength of your body and the strength of your heart."
+#define GOSSIP_ITEM_GRANT   "Has pensado bien, espiritu. Te pido que me concedas la fuerza de tu cuerpo y la fuerza de tu corazon."
 
 class npc_lunaclaw_spirit : public CreatureScript
 {
@@ -1644,24 +1644,24 @@ enum Sayge
     SPELL_FORTUNE  = 23765  // faire fortune
 };
 
-#define GOSSIP_HELLO_SAYGE          "Yes"
-#define GOSSIP_SENDACTION_SAYGE1    "Slay the Man"
-#define GOSSIP_SENDACTION_SAYGE2    "Turn him over to liege"
-#define GOSSIP_SENDACTION_SAYGE3    "Confiscate the corn"
-#define GOSSIP_SENDACTION_SAYGE4    "Let him go and have the corn"
-#define GOSSIP_SENDACTION_SAYGE5    "Execute your friend painfully"
-#define GOSSIP_SENDACTION_SAYGE6    "Execute your friend painlessly"
-#define GOSSIP_SENDACTION_SAYGE7    "Let your friend go"
-#define GOSSIP_SENDACTION_SAYGE8    "Confront the diplomat"
-#define GOSSIP_SENDACTION_SAYGE9    "Show not so quiet defiance"
-#define GOSSIP_SENDACTION_SAYGE10   "Remain quiet"
-#define GOSSIP_SENDACTION_SAYGE11   "Speak against your brother openly"
-#define GOSSIP_SENDACTION_SAYGE12   "Help your brother in"
-#define GOSSIP_SENDACTION_SAYGE13   "Keep your brother out without letting him know"
-#define GOSSIP_SENDACTION_SAYGE14   "Take credit, keep gold"
-#define GOSSIP_SENDACTION_SAYGE15   "Take credit, share the gold"
-#define GOSSIP_SENDACTION_SAYGE16   "Let the knight take credit"
-#define GOSSIP_SENDACTION_SAYGE17   "Thanks"
+#define GOSSIP_HELLO_SAYGE          "Si"
+#define GOSSIP_SENDACTION_SAYGE1    "Mata al hombre"
+#define GOSSIP_SENDACTION_SAYGE2    "Conviertelo a un vasallo"
+#define GOSSIP_SENDACTION_SAYGE3    "Confiscale el Maiz"
+#define GOSSIP_SENDACTION_SAYGE4    "Dejalo ir y que se quede el maiz"
+#define GOSSIP_SENDACTION_SAYGE5    "Ejecuta a tu amigo dolorosamente"
+#define GOSSIP_SENDACTION_SAYGE6    "Ejecuta a tu amigo sin dolor"
+#define GOSSIP_SENDACTION_SAYGE7    "Deja ir a tu amigo"
+#define GOSSIP_SENDACTION_SAYGE8    "Enfrentate al diplomatico"
+#define GOSSIP_SENDACTION_SAYGE9    "Muestrate desafioso"
+#define GOSSIP_SENDACTION_SAYGE10   "Quedate en silencio"
+#define GOSSIP_SENDACTION_SAYGE11   "Habla en contra de tu hermano abiertamente"
+#define GOSSIP_SENDACTION_SAYGE12   "Ayuda a tu hermano"
+#define GOSSIP_SENDACTION_SAYGE13   "Manten a tu hermano fuera sin que se entere"
+#define GOSSIP_SENDACTION_SAYGE14   "Toma el credito y quedate el oro"
+#define GOSSIP_SENDACTION_SAYGE15   "Toma el credito y comparte el oro"
+#define GOSSIP_SENDACTION_SAYGE16   "Deja al caballero coger el credito"
+#define GOSSIP_SENDACTION_SAYGE17   "Gracias"
 
 class npc_sayge : public CreatureScript
 {
@@ -1827,12 +1827,12 @@ public:
 # npc_wormhole
 ######*/
 
-#define GOSSIP_ENGINEERING1   "Borean Tundra"
-#define GOSSIP_ENGINEERING2   "Howling Fjord"
-#define GOSSIP_ENGINEERING3   "Sholazar Basin"
-#define GOSSIP_ENGINEERING4   "Icecrown"
-#define GOSSIP_ENGINEERING5   "Storm Peaks"
-#define GOSSIP_ENGINEERING6   "Underground..."
+#define GOSSIP_ENGINEERING1   "Tundra Boreal"
+#define GOSSIP_ENGINEERING2   "Fiordo Aquilonal"
+#define GOSSIP_ENGINEERING3   "Cuenca de Sholazar"
+#define GOSSIP_ENGINEERING4   "Corona de Hielo"
+#define GOSSIP_ENGINEERING5   "Picos Tormenta"
+#define GOSSIP_ENGINEERING6   "Los Subterraneos..."
 
 enum WormholeSpells
 {
@@ -1946,9 +1946,9 @@ enum PetTrainer
     TEXT_CONFIRM                = 7722
 };
 
-#define GOSSIP_PET1             "How do I train my pet?"
-#define GOSSIP_PET2             "I wish to untrain my pet."
-#define GOSSIP_PET_CONFIRM      "Yes, please do."
+#define GOSSIP_PET1             "Como entrenar a mi mascota."
+#define GOSSIP_PET2             "Desentrenar a mi mascota."
+#define GOSSIP_PET_CONFIRM      "Si, lo confirmo."
 
 class npc_pet_trainer : public CreatureScript
 {
@@ -2035,15 +2035,15 @@ enum LockSmith
     SPELL_ESSENCE_INFUSED_MOONSTONE       = 40173,
 };
 
-#define GOSSIP_LOST_ARCATRAZ_KEY                "I've lost my key to the Arcatraz."
-#define GOSSIP_LOST_SHADOWFORGE_KEY             "I've lost my key to the Blackrock Depths."
-#define GOSSIP_LOST_SKELETON_KEY                "I've lost my key to the Scholomance."
-#define GOSSIP_LOST_SHATTERED_HALLS_KEY         "I've lost my key to the Shattered Halls."
-#define GOSSIP_LOST_THE_MASTERS_KEY             "I've lost my key to the Karazhan."
-#define GOSSIP_LOST_VIOLET_HOLD_KEY             "I've lost my key to the Violet Hold."
-#define GOSSIP_LOST_ESSENCE_INFUSED_MOONSTONE   "I've lost my Essence-Infused Moonstone."
-#define GOSSIP_LOST_KEY_TO_THE_FOCUSING_IRIS    "I've lost my Key to the Focusing Iris."
-#define GOSSIP_LOST_HC_KEY_TO_THE_FOCUSING_IRIS "I've lost my Heroic Key to the Focusing Iris."
+#define GOSSIP_LOST_ARCATRAZ_KEY                "He perdido la llave del Arcatraz."
+#define GOSSIP_LOST_SHADOWFORGE_KEY             "He perdido la llave a Profundidades Roca Negra."
+#define GOSSIP_LOST_SKELETON_KEY                "He perdido mi llave para Scholomance."
+#define GOSSIP_LOST_SHATTERED_HALLS_KEY         "He perdido la llave de las Salas Arrasadas."
+#define GOSSIP_LOST_THE_MASTERS_KEY             "He perdido mi llave para Karazhan."
+#define GOSSIP_LOST_VIOLET_HOLD_KEY             "He perdido la llave de El Bastion Violeta."
+#define GOSSIP_LOST_ESSENCE_INFUSED_MOONSTONE   "He perdido mi Piedra lunar imbuida de esencia."
+#define GOSSIP_LOST_KEY_TO_THE_FOCUSING_IRIS    "He perdido la llave del Iris de Enfoque."
+#define GOSSIP_LOST_HC_KEY_TO_THE_FOCUSING_IRIS "He perdido la llave del Iris de Enfoque Heroico."
 
 class npc_locksmith : public CreatureScript
 {
@@ -2147,8 +2147,8 @@ public:
 
 #define EXP_COST                100000 //10 00 00 copper (10golds)
 #define GOSSIP_TEXT_EXP         14736
-#define GOSSIP_XP_OFF           "I no longer wish to gain experience."
-#define GOSSIP_XP_ON            "I wish to start gaining experience again."
+#define GOSSIP_XP_OFF           "No quiero volver a ganar experiencia."
+#define GOSSIP_XP_ON            "Quiero volver a ganar experiencia de nuevo."
 
 class npc_experience : public CreatureScript
 {
