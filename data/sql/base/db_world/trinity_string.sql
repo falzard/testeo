@@ -683,7 +683,7 @@ INSERT INTO `trinity_string` VALUES
 (807,'Please provide character name',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (808,'Player %s not found or offline',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (809,'Account for character %s not found',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(810,'|Hplayer:$N|h[$N]|h has earned the achievement $a!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(810,'¡|Hjugador:$N|h[$N]|h ha conseguido el logro $a!',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (811,'Guild Master',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (812,'Officer',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 (813,'Veteran',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
