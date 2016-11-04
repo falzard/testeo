@@ -575,9 +575,9 @@ void WorldSession::HandleItemQuerySingleOpcode(WorldPacket & recvData)
     else
     {
         ;//sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: CMSG_ITEM_QUERY_SINGLE - NO item INFO! (ENTRY: %u)", item);
-        WorldPacket data(SMSG_ITEM_QUERY_SINGLE_RESPONSE, 4);
-        data << uint32(item | 0x80000000);
-        SendPacket(&data);
+        WorldPacket queryData(SMSG_ITEM_QUERY_SINGLE_RESPONSE, 4);
+        queryData << uint32(item | 0x80000000);
+        SendPacket(&queryData);
     }
 }
 
@@ -1192,9 +1192,15 @@ void WorldSession::HandleItemNameQueryOpcode(WorldPacket & recvData)
     ItemSetNameEntry const* pName = sObjectMgr->GetItemSetNameEntry(itemid);
     if (pName)
     {
-        WorldPacket data(SMSG_ITEM_NAME_QUERY_RESPONSE, (4+pName->name.size()+1+4));
+        std::string Name = pName->name;
+        LocaleConstant loc_idx = GetSessionDbLocaleIndex();
+        if (loc_idx >= 0)
+            if (ItemSetNameLocale const* isnl = sObjectMgr->GetItemSetNameLocale(itemid))
+                ObjectMgr::GetLocaleString(isnl->Name, loc_idx, Name);
+
+        WorldPacket data(SMSG_ITEM_NAME_QUERY_RESPONSE, (4+Name.size()+1+4));
         data << uint32(itemid);
-        data << pName->name;
+        data << Name;
         data << uint32(pName->InventoryType);
         SendPacket(&data);
     }
