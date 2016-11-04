@@ -1055,7 +1055,12 @@ class ObjectMgr
             if (itr == _linkedRespawnStore.end()) return 0;
             return itr->second;
         }
-
+        ItemLocale const* GetItemLocale(uint32 entry) const
+        {
+            ItemLocaleContainer::const_iterator itr = _itemLocaleStore.find(entry);
+            if (itr == _itemLocaleStore.end()) return NULL;
+            return &itr->second;
+        }
         GameObjectData const* GetGOData(uint32 guid) const
         {
             GameObjectDataContainer::const_iterator itr = _gameObjectDataStore.find(guid);
