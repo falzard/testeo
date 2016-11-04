@@ -677,18 +677,6 @@ class ObjectMgr
         ItemTemplate const* GetItemTemplate(uint32 entry);
         ItemTemplateContainer const* GetItemTemplateStore() const { return &_itemTemplateStore; }
 
-        ItemLocale const* GetItemLocale(uint32 entry) const
-        {
-            ItemLocaleContainer::const_iterator itr = _itemLocaleStore.find(entry);
-            if (itr == _itemLocaleStore.end()) return NULL;
-            return &itr->second;
-        }
-        ItemSetNameLocale const* GetItemSetNameLocale(uint32 entry) const
-        {
-            ItemSetNameLocaleContainer::const_iterator itr = _itemSetNameLocaleStore.find(entry);
-            if (itr == _itemSetNameLocaleStore.end())return NULL;
-            return &itr->second;
-        }
         ItemSetNameEntry const* GetItemSetNameEntry(uint32 itemId)
         {
             ItemSetNameContainer::iterator itr = _itemSetNameStore.find(itemId);
@@ -1059,6 +1047,12 @@ class ObjectMgr
         {
             ItemLocaleContainer::const_iterator itr = _itemLocaleStore.find(entry);
             if (itr == _itemLocaleStore.end()) return NULL;
+            return &itr->second;
+        }
+        ItemSetNameLocale const* GetItemSetNameLocale(uint32 entry) const
+        {
+            ItemSetNameLocaleContainer::const_iterator itr = _itemSetNameLocaleStore.find(entry);
+            if (itr == _itemSetNameLocaleStore.end())return NULL;
             return &itr->second;
         }
         GameObjectData const* GetGOData(uint32 guid) const
