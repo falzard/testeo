@@ -1359,12 +1359,16 @@ void World::SetInitialWorldSettings()
     sObjectMgr->LoadInstanceTemplate();
 
     // xinef: Global Storage, should be loaded asap
-    sLog->outString("Load Global Player Data...");
+    sLog->outString("Cargando Datos Globales de Personajes...");
     sWorld->LoadGlobalPlayerDataStore();
 
     // Must be called before `creature_respawn`/`gameobject_respawn` tables
-    sLog->outString("Loading instances...");
+    sLog->outString("Cargando instancias...");
     sInstanceSaveMgr->LoadInstances();
+
+    sLog->outString("Loading Broadcast texts...");
+    sObjectMgr->LoadBroadcastTexts();
+    sObjectMgr->LoadBroadcastTextLocales();
 
     sLog->outString("Loading Localization strings...");
     uint32 oldMSTime = getMSTime();

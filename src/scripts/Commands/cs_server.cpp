@@ -101,9 +101,9 @@ public:
 
         handler->PSendSysMessage("%s", _FULLVERSION);
         if (!queuedSessionCount)
-            handler->PSendSysMessage("Connected players: %u. Characters in world: %u.", activeSessionCount, playerCount);
+            handler->PSendSysMessage("Jugadores Conectados: %u. Personajes en el mundo: %u.", activeSessionCount, playerCount);
         else
-            handler->PSendSysMessage("Connected players: %u. Characters in world: %u. Queue: %u.", activeSessionCount, playerCount, queuedSessionCount);
+            handler->PSendSysMessage("Jugadores Conectados: %u. Personajes en el mundo: %u. Cola: %u.", activeSessionCount, playerCount, queuedSessionCount);
         //handler->PSendSysMessage("Connection peak: %u.", connPeak);
         handler->PSendSysMessage(LANG_UPTIME, uptime.c_str());
         handler->PSendSysMessage("Update time diff: %ums, average: %ums.", updateTime, avgUpdateTime);
