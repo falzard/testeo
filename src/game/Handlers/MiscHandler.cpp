@@ -328,6 +328,18 @@ void WorldSession::HandleWhoOpcode(WorldPacket& recvData)
             continue;
 
         std::string pname = itr->second->GetName();
+		if (itr->second->HasFlag(PLAYER_FLAGS, PLAYER_FLAGS_DEVELOPER))
+		{
+			pname = "|ff00ff00<Dev>|r";
+			pname.append(itr->second->GetName());
+		}
+		if (itr->second->IsGameMaster())
+		{
+			pname = "|cff00ccff<MJ>|r";
+			pname.append(itr->second->GetName());
+		}
+		else
+		pname = itr->second->GetName();
         std::wstring wpname;
         if (!Utf8toWStr(pname, wpname))
             continue;
