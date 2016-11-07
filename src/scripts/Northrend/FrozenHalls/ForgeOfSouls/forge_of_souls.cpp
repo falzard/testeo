@@ -174,9 +174,9 @@ public:
         if (creature->HasFlag(UNIT_NPC_FLAGS, UNIT_NPC_FLAG_GOSSIP))
         {
             if (creature->GetEntry() == NPC_JAINA_PART1)
-                player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "What would you have of me, my lady?", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
+                player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Que debemos hacer.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
             else
-                player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "What would you have of me, Banshee Queen?", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
+                player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Que debemos hacer, reina Banshee.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
         }
 
         player->SEND_GOSSIP_MENU(15207, creature->GetGUID());
