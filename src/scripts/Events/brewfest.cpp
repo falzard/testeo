@@ -76,8 +76,8 @@ enum corenDirebrew
     EVENT_DIREBREW_RESPAWN2         = 6,
 };
 
-#define GOSSIP_ITEM_COREN1      "Insult Coren Direbrew's Brew."
-#define GOSSIP_ITEM_COREN2      "Insult."
+#define GOSSIP_ITEM_COREN1      "Insultar a Coren, horrible elaborador de cerveza."
+#define GOSSIP_ITEM_COREN2      "Insultar."
 
 class npc_coren_direbrew : public CreatureScript
 {
@@ -101,7 +101,7 @@ public:
             case GOSSIP_ACTION_INFO_DEF+2:
                 player->CLOSE_GOSSIP_MENU();
                 creature->AI()->DoAction(ACTION_START_FIGHT);
-                creature->MonsterSay("You'll pay for this insult, $C.", LANG_UNIVERSAL, player);
+                creature->MonsterSay("Pagaras por esta ofensa, $C.", LANG_UNIVERSAL, player);
                 break;
         }
         return true;
@@ -148,7 +148,7 @@ public:
                     if (cr = me->SummonCreature(NPC_ANTAGONIST, me->GetPositionX()+3*cos(o), me->GetPositionY()+3*sin(o), me->GetPositionZ(), me->GetOrientation()))
                     {
                         if (i == 0)
-                            cr->MonsterSay("Time to die.", LANG_UNIVERSAL, 0);
+                            cr->MonsterSay("Hora de morir.", LANG_UNIVERSAL, 0);
 
                         summons.Summon(cr);
                         cr->SetInCombatWithZone();
@@ -472,7 +472,7 @@ class npc_brewfest_keg_reciver : public CreatureScript
             player->PrepareQuestMenu(creature->GetGUID());
 
         if (!player->HasSpellCooldown(SPELL_COOLDOWN_CHECKER) && player->GetQuestRewardStatus(player->GetTeamId() == TEAM_ALLIANCE ? QUEST_THERE_AND_BACK_AGAIN_A : QUEST_THERE_AND_BACK_AGAIN_H))
-            player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Do you have additional work?", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
+            player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Te queda mas trabajo adicional?", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
         
         player->SEND_GOSSIP_MENU((creature->GetEntry() == NPC_NEILL_RAMSTEIN ? 8934 : 8976), creature->GetGUID());
         return true;
