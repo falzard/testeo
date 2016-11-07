@@ -5644,22 +5644,26 @@ void Player::ClearChannelWatch()
 
 void Player::UpdateLocalChannels(uint32 newZone)
 {
+    // pussywizard: mutex needed (tc changed opcode to THREAD UNSAFE)
+    static ACE_Thread_Mutex channelsLock;
+    TRINITY_GUARD(ACE_Thread_Mutex, channelsLock);
+
     if (GetSession()->PlayerLoading() && !IsBeingTeleportedFar())
         return;                                              // The client handles it automatically after loading, but not after teleporting
 
-    AreaTableEntry const* current_zone = sAreaTableStore.LookupEntry(newZone);
+    AreaTableEntry const* current_zone = GetAreaEntryByAreaID(newZone);
     if (!current_zone)
         return;
 
-    ChannelMgr* cMgr = ChannelMgr::forTeam(GetTeam());
+    ChannelMgr* cMgr = ChannelMgr::forTeam(GetTeamId());
     if (!cMgr)
         return;
 
     std::string current_zone_name = current_zone->area_name[GetSession()->GetSessionDbcLocale()];
     for (uint32 i = 0; i < sChatChannelsStore.GetNumRows(); ++i)
     {
-        ChatChannelsEntry const* channelEntry = sChatChannelsStore.LookupEntry(i);
-        if (!channelEntry)
+        ChatChannelsEntry const* channel = sChatChannelsStore.LookupEntry(i);
+        if (!channel)
             continue;
 
         Channel* usedChannel = nullptr;
@@ -5676,21 +5680,24 @@ void Player::UpdateLocalChannels(uint32 newZone)
         Channel* joinChannel = nullptr;
         bool sendRemove = true;
 
-        if (CanJoinConstantChannelInZone(channelEntry, current_zone))
+        if (CanJoinConstantChannelInZone(channel, current_zone))
         {
-            if (!(channelEntry->flags & CHANNEL_DBC_FLAG_GLOBAL))
+            if (!(channel->flags & CHANNEL_DBC_FLAG_GLOBAL))
             {
-                if (channelEntry->flags & CHANNEL_DBC_FLAG_CITY_ONLY && usedChannel)
+                char new_channel_name_buf[100];
+
+                if (channel->flags & CHANNEL_DBC_FLAG_CITY_ONLY && usedChannel)
                     continue;                            // Already on the channel, as city channel names are not changing
 
                 std::string currentNameExt;
-                if (channelEntry->flags & CHANNEL_DBC_FLAG_CITY_ONLY)
+                if (channel->flags & CHANNEL_DBC_FLAG_CITY_ONLY)
                     currentNameExt = sObjectMgr->GetTrinityStringForDBCLocale(LANG_CHANNEL_CITY);
                 else
                     currentNameExt = current_zone_name;
 
-                std::string newChannelName = Trinity::StringFormat(channelEntry->pattern[sWorld->GetDefaultDbcLocale()], currentNameExt);
-                joinChannel = cMgr->GetJoinChannel(newChannelName, channelEntry->ChannelID);
+				snprintf(new_channel_name_buf, 100, channel->pattern[m_session->GetSessionDbcLocale()], currentNameExt);
+				
+                joinChannel = cMgr->GetJoinChannel(new_channel_name_buf, channel->ChannelID);
                 if (usedChannel)
                 {
                     if (joinChannel != usedChannel)
@@ -5703,7 +5710,7 @@ void Player::UpdateLocalChannels(uint32 newZone)
                 }
             }
             else // this is global channel, has no pattern really
-                joinChannel = cMgr->GetJoinChannel(channelEntry->pattern[sWorld->GetDefaultDbcLocale()], channelEntry->ChannelID);
+                joinChannel = cMgr->GetJoinChannel(channel->pattern[sWorld->GetDefaultDbcLocale()], channel->ChannelID);
         }
         else
             removeChannel = usedChannel;
@@ -5716,7 +5723,6 @@ void Player::UpdateLocalChannels(uint32 newZone)
             removeChannel->LeaveChannel(this, sendRemove); // Leave old channel
             std::string name = removeChannel->GetName(); // Store name, (*i)erase in LeftChannel
             LeftChannel(removeChannel);                  // Remove from player's channel list
-            cMgr->LeftChannel(name);                     // Delete if empty
         }
     }
 }
