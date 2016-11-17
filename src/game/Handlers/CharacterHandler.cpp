@@ -1074,23 +1074,6 @@ void WorldSession::HandlePlayerLoginFromDB(LoginQueryHolder* holder)
 
     if (pCurrChar->HasAtLoginFlag(AT_LOGIN_FIRST))
         pCurrChar->RemoveAtLoginFlag(AT_LOGIN_FIRST);
-	
-    if(pCurrChar->HasAtLoginFlag(AT_LOGIN_UPDATE_NAME))
-    {
-//        sWorld->UpdateCharacterNameData(pCurrChar->GetGUIDLow() );
-        std::string nameUpdate_AT_LOGIN_UPDATE_NAME;
-        QueryResult result = CharacterDatabase.PQuery("SELECT name FROM characters WHERE `guid` = '%u'", pCurrChar->GetGUIDLow());
-        if(result)
-        {
-            //sLog->outErrorDb("SHIT!@ %u", pCurrChar->GetGUIDLow());
-            nameUpdate_AT_LOGIN_UPDATE_NAME = (*result)[0].GetString();
-            sWorld->UpdateGlobalPlayerData(pCurrChar->GetGUIDLow(), nameUpdate_AT_LOGIN_UPDATE_NAME);
-            sWorld->AddGlobalPlayerData(pCurrChar->GetGUIDLow(), nameUpdate_AT_LOGIN_UPDATE_NAME, pCurrChar->getGender(), pCurrChar->getRace(), pCurrChar->getClass(), pCurrChar->getLevel());
-        }
-//        if(!sWorld->UpdateCharacterNameData(pCurrChar->GetGUIDLow(), pCurrChar->GetName(), pCurrChar->getGender(), pCurrChar->getRace()))
-//           sWorld->AddCharacterNameData(pCurrChar->GetGUIDLow(), pCurrChar->GetName(), pCurrChar->getGender(), pCurrChar->getRace(), pCurrChar->getClass());
-        pCurrChar->RemoveAtLoginFlag(AT_LOGIN_UPDATE_NAME);
-    }
 
     if (pCurrChar->HasAtLoginFlag(AT_LOGIN_CHECK_ACHIEVS))
     {
