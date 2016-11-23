@@ -12657,6 +12657,7 @@ Item* Player::EquipItem(uint16 pos, Item* pItem, bool update)
     UpdateAchievementCriteria(ACHIEVEMENT_CRITERIA_TYPE_EQUIP_ITEM, pItem->GetEntry());
     UpdateAchievementCriteria(ACHIEVEMENT_CRITERIA_TYPE_EQUIP_EPIC_ITEM, pItem->GetEntry(), slot);
 
+	sScriptMgr->OnEquip(this, pItem, bag, slot, update);
     return pItem;
 }
 
@@ -12694,6 +12695,8 @@ void Player::SetVisibleItemSlot(uint8 slot, Item* pItem)
         SetUInt32Value(PLAYER_VISIBLE_ITEM_1_ENTRYID + (slot * 2), 0);
         SetUInt32Value(PLAYER_VISIBLE_ITEM_1_ENCHANTMENT + (slot * 2), 0);
     }
+
+	sScriptMgr->OnAfterPlayerSetVisibleItemSlot(this, slot, pItem);
 }
 
 void Player::VisualizeItem(uint8 slot, Item* pItem)
@@ -12818,6 +12821,8 @@ void Player::MoveItemFromInventory(uint8 bag, uint8 slot, bool update)
             it->RemoveFromWorld();
             it->DestroyForPlayer(this);
         }
+
+		sScriptMgr->OnAfterPlayerMoveItemFromInventory(this,it,bag,slot,update);
     }
 }
 
