@@ -1299,5 +1299,6 @@ enum TrinityStrings
     LANG_SELECT_PLAYER_OR_PET                     = 11016,
 
 	LANG_MUTED_PLAYER							  = 30000, // Mute for player 2 hour
+	LANG_BG_QUEUE_ANNOUNCE_SELF					  = 30001,
 };
 #endif
