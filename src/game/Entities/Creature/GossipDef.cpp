@@ -668,8 +668,8 @@ void PlayerMenu::SendQuestGiverRequestItems(Quest const* quest, uint64 npcGUID, 
     WorldPacket data(SMSG_QUESTGIVER_REQUEST_ITEMS, 300);   // guess size
     data << uint64(npcGUID);
     data << uint32(quest->GetQuestId());
-+	data << questTitle;
-+	data << requestItemsText;
+	data << questTitle;
+	data << requestItemsText;
 
     data << uint32(0x00);                                   // unknown
 

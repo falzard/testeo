@@ -8,10 +8,10 @@
 #include "trial_of_the_champion.h"
 #include "Player.h"
 
-#define GOSSIP_START_EVENT1a "Estoy listo."
-#define GOSSIP_START_EVENT1b "Estoy listo, omite el espectaculo."
-#define GOSSIP_START_EVENT2  "Estoy listo para el siguiente desafio."
-#define GOSSIP_START_EVENT3  "Estoy listo."
+#define GOSSIP_START_EVENT1a "¡Estoy listo!"
+#define GOSSIP_START_EVENT1b "¡Estoy listo, omite el espectaculo!"
+#define GOSSIP_START_EVENT2  "¡Estoy listo para el siguiente desafio!"
+#define GOSSIP_START_EVENT3  "¡Estoy listo!"
 
 class npc_announcer_toc5 : public CreatureScript
 {

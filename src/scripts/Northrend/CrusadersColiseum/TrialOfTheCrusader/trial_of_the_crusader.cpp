@@ -52,7 +52,7 @@ public:
                 return true;
         }
 
-        pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "We are ready!", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1337);
+        pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "¡Estamos listos!", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1337);
         pPlayer->SEND_GOSSIP_MENU(gossipTextId, pCreature->GetGUID());
         return true;
     }

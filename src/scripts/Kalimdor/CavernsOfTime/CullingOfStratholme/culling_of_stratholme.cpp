@@ -136,12 +136,12 @@ enum Spells
 };
 
 
-#define GOSSIP_ITEM_ARTHAS_1 "Yes, my Prince. We're ready."
-#define GOSSIP_ITEM_ARTHAS_2 "We're only doing what is best for Loarderon your Highness."
-#define GOSSIP_ITEM_ARTHAS_3 "Lead the way Prince Arthas."
-#define GOSSIP_ITEM_ARTHAS_4 "I'm ready."
-#define GOSSIP_ITEM_ARTHAS_5 "For Lordaeron!"
-#define GOSSIP_ITEM_ARTHAS_6 "I'm ready to battle the dreadlord, sire."
+#define GOSSIP_ITEM_ARTHAS_1 "¡Si mi principe, estamos listos!"
+#define GOSSIP_ITEM_ARTHAS_2 "¡Solo hacemos lo que es mejor para Loarderon su Alteza!."
+#define GOSSIP_ITEM_ARTHAS_3 "Conducenos por el camino, Príncipe Arthas."
+#define GOSSIP_ITEM_ARTHAS_4 "¡Estamos listos!"
+#define GOSSIP_ITEM_ARTHAS_5 "¡Por Lordaeron!"
+#define GOSSIP_ITEM_ARTHAS_6 "¡Estamos listos para luchar contra el Señor del Terror, mi señor!."
 
 enum GossipMenuArthas
 {
@@ -1012,7 +1012,7 @@ public:
                         }
 
                         summons.DespawnAll();
-                        me->MonsterSay("I can't afford to spare you.", LANG_UNIVERSAL, 0);
+                        me->MonsterSay("¡No puedo prescindir de ti!", LANG_UNIVERSAL, 0);
                         me->SetFacingTo(0.0f);
                         ScheduleNextEvent(currentEvent, 5000);
                         break;

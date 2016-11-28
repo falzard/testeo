@@ -28,14 +28,14 @@ enum Spawns
     SPAWN_NEAR_TOWER    = 2,
 };
 
-#define YELL_HURRY  "Hurry, we don't have much time"
+#define YELL_HURRY  "¡Deprisa, no tenemos mucho tiempo"
 
 // Locations for summoning gargoyls and frost wyrms in special cases
 float SpawnPointSpecial[3][3]=
 {
     {5497.08f,    -2493.23f,    1535.72f}, //spawn point for the gargoyles near the horde gate
     {5624.53f,    -2548.12f,    1551.54f}, //spawn point for the frost wyrm near the horde gate
-    {5604.41f,   -2811.98f,   1547.77f}  //spawn point for the gargoyles and wyrms near the horde tower
+    {5604.41f,    -2811.98f,    1547.77f}  //spawn point for the gargoyles and wyrms near the horde tower
 };
 
 // Locations for summoning waves in Alliance base
