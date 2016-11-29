@@ -72,7 +72,7 @@ enum PaletressEvents
     EVENT_SPELL_WAKING_NIGHTMARE,
 };
 
-#define TEXT_RADIATE                    "Eadric el Puro empieza a irradiar luz.. protege tus ojos."
+#define TEXT_RADIATE                    "¡Eadric el Puro empieza a irradiar luz.. protege tus ojos!"
 
 class boss_eadric : public CreatureScript
 {
@@ -175,7 +175,7 @@ public:
                     if( Unit* target = SelectTarget(SELECT_TARGET_RANDOM, 0, 55.0f, true) )
                     {
                         char buffer[100];
-                        sprintf(buffer, "Eadric el Puro apunta a %s con el Martillo del Honrado", target->GetName().c_str());
+                        sprintf(buffer, "¡Eadric el Puro apunta a %s con el Martillo del Honrado!", target->GetName().c_str());
                         me->MonsterTextEmote(buffer, 0, true);
                         Talk(TEXT_EADRIC_HAMMER);
                         me->CastSpell(target, SPELL_HAMMER_JUSTICE, true);

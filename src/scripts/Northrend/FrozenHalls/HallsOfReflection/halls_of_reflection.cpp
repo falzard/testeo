@@ -95,16 +95,16 @@ public:
         {
             QuestStatus status = player->GetQuestStatus(creature->GetEntry() == NPC_SYLVANAS_PART1 ? QUEST_DELIVRANCE_FROM_THE_PIT_H2 : QUEST_DELIVRANCE_FROM_THE_PIT_A2);
             if (status == QUEST_STATUS_COMPLETE || status == QUEST_STATUS_REWARDED)
-                player->ADD_GOSSIP_ITEM(0, "Can you remove the sword?", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
+                player->ADD_GOSSIP_ITEM(0, "¿Puedes quitar la espada?", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
 
             // once last quest is completed, she offers this shortcut of the starting event
             status = player->GetQuestStatus(creature->GetEntry() == NPC_SYLVANAS_PART1 ? QUEST_WRATH_OF_THE_LICH_KING_H2 : QUEST_WRATH_OF_THE_LICH_KING_A2);
             if (status == QUEST_STATUS_COMPLETE || status == QUEST_STATUS_REWARDED)
             {
                 if (creature->GetEntry() == NPC_SYLVANAS_PART1)
-                    player->ADD_GOSSIP_ITEM(0, "Dark Lady, I think I hear Arthas coming. Whatever you're going to do, do it quickly.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+2);
+                    player->ADD_GOSSIP_ITEM(0, "Dama Oscura, creo que escucho a Arthas venir. ¡Lo que sea que vayas a hacer, hazlo rápido!", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+2);
                 else
-                    player->ADD_GOSSIP_ITEM(0, "My Lady, I think I hear Arthas coming. Whatever you're going to do, do it quickly.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+2);
+                    player->ADD_GOSSIP_ITEM(0, "Mi señora, creo que oigo a Arthas venir. ¡Lo que sea que vayas a hacer, hazlo rápido!", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+2);
             }
         }
 
