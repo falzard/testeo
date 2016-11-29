@@ -31,27 +31,27 @@ public:
         if (!pInstance)
             return true;
 
-        player->ADD_GOSSIP_ITEM(0, "Teleport to the Expedition Base Camp.", GOSSIP_SENDER_MAIN, BASE_CAMP);
+        player->ADD_GOSSIP_ITEM(0, "Teletransporte Campamento base de la Expedición.", GOSSIP_SENDER_MAIN, BASE_CAMP);
         if (pInstance->GetData(TYPE_LEVIATHAN) >= DONE) // count special
         {
-            player->ADD_GOSSIP_ITEM(0, "Teleport to the Formation Grounds.", GOSSIP_SENDER_MAIN, GROUNDS);
+            player->ADD_GOSSIP_ITEM(0, "Teletransporte a Campos de Formación.", GOSSIP_SENDER_MAIN, GROUNDS);
             if (pInstance->GetData(TYPE_LEVIATHAN) == DONE)
             {
-                player->ADD_GOSSIP_ITEM(0, "Teleport to the Colossal Forge.", GOSSIP_SENDER_MAIN, FORGE);
+                player->ADD_GOSSIP_ITEM(0, "Teletransporte a la Forja Colosal.", GOSSIP_SENDER_MAIN, FORGE);
                 if (pInstance->GetData(TYPE_XT002) == DONE)
                 {
-                    player->ADD_GOSSIP_ITEM(0, "Teleport to the Scrapyard.", GOSSIP_SENDER_MAIN, SCRAPYARD);
-                    player->ADD_GOSSIP_ITEM(0, "Teleport to the Antechamber of Ulduar.", GOSSIP_SENDER_MAIN, ANTECHAMBER);
+                    player->ADD_GOSSIP_ITEM(0, "Teletransporte al Depósito de chatarra.", GOSSIP_SENDER_MAIN, SCRAPYARD);
+                    player->ADD_GOSSIP_ITEM(0, "Teletransporte a la Antecamara de Ulduar.", GOSSIP_SENDER_MAIN, ANTECHAMBER);
                     if (pInstance->GetData(TYPE_KOLOGARN) == DONE)
                     {
-                        player->ADD_GOSSIP_ITEM(0, "Teleport to the Shattered Walkway.", GOSSIP_SENDER_MAIN, WALKWAY);
+                        player->ADD_GOSSIP_ITEM(0, "Teletransporte a la Pasarela Destrozada.", GOSSIP_SENDER_MAIN, WALKWAY);
                         if (pInstance->GetData(TYPE_AURIAYA) == DONE)
                         {
-                            player->ADD_GOSSIP_ITEM(0, "Teleport to the Conservatory of Life.", GOSSIP_SENDER_MAIN, CONSERVATORY);
+                            player->ADD_GOSSIP_ITEM(0, "Teletransporte al Conservatorio de la Vida.", GOSSIP_SENDER_MAIN, CONSERVATORY);
                             if (pInstance->GetData(DATA_CALL_TRAM))
-                                player->ADD_GOSSIP_ITEM(0, "Teleport to the Spark of Imagination.", GOSSIP_SENDER_MAIN, SPARK);
+                                player->ADD_GOSSIP_ITEM(0, "Teletransporte a la Chispa de la Imaginación.", GOSSIP_SENDER_MAIN, SPARK);
                             if (pInstance->GetData(TYPE_VEZAX) == DONE)
-                                player->ADD_GOSSIP_ITEM(0, "Teleport to the Prison of Yogg-Saron.", GOSSIP_SENDER_MAIN, MADNESS);
+                                player->ADD_GOSSIP_ITEM(0, "Teletransporte a la prisión de Yogg-Saron.", GOSSIP_SENDER_MAIN, MADNESS);
                         }
                     }
                 }
@@ -109,7 +109,7 @@ public:
 
     bool OnGossipHello(Player* pPlayer, Creature* pCreature)
     {
-        pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Lend us your aid, keeper. Together we shall defeat Yogg-Saron.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
+        pPlayer->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Prestanos tu ayuda, guardián. Juntos derrotaremos a Yogg-Saron.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+1);
         pPlayer->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, pCreature->GetGUID());
         return true;
     }
@@ -121,22 +121,22 @@ public:
         switch (creature->GetEntry())
         {
             case NPC_FREYA_GOSSIP:
-                creature->MonsterYell("Eonar, your servant calls for your blessing!", LANG_UNIVERSAL, 0);
+                creature->MonsterYell("¡Eonar, tu siervo pide tu bendición!", LANG_UNIVERSAL, 0);
                 creature->PlayDirectSound(15535);
                 _keeper = KEEPER_FREYA;
                 break;
             case NPC_HODIR_GOSSIP:
-                creature->MonsterYell("The veil of winter will protect you, champions!", LANG_UNIVERSAL, 0);
+                creature->MonsterYell("¡El velo del invierno os protegerá, campeones!", LANG_UNIVERSAL, 0);
                 creature->PlayDirectSound(15559);
                 _keeper = KEEPER_HODIR;
                 break;
             case NPC_MIMIRON_GOSSIP:
-                creature->MonsterYell("Combat matrix enhanced. Behold wonderous rapidity!", LANG_UNIVERSAL, 0);
+                creature->MonsterYell("¡Mejora de la matriz de combate.. Contempla su maravillosa rapidez!", LANG_UNIVERSAL, 0);
                 creature->PlayDirectSound(15630);
                 _keeper = KEEPER_MIMIRON;
                 break;
             case NPC_THORIM_GOSSIP:
-                creature->MonsterYell("Golganneth, lend me your strengh! Grant my mortal allies the power of thunder!", LANG_UNIVERSAL, 0);
+                creature->MonsterYell("¡Golganneth, prestame tu fuerza y concede a mis aliados mortales el poder del trueno!", LANG_UNIVERSAL, 0);
                 creature->PlayDirectSound(15750);
                 _keeper = KEEPER_THORIM;
                 break;
