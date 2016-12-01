@@ -266,7 +266,7 @@ public:
             {
                 if (!bLockHealthCheck)
                 {
-                    me->MonsterYell("I AM UNSTOPPABLE!", LANG_UNIVERSAL, 0);
+                    me->MonsterYell("¡SOY IMPARABLE!", LANG_UNIVERSAL, 0);
                     me->PlayDirectSound(SOUND_SPARK_BUFF);
                 }
                 else
@@ -279,7 +279,7 @@ public:
             events.Reset();
             DoZoneInCombat();
 
-            me->MonsterYell("My patience has reached it's limit, I will be rid of you!", LANG_UNIVERSAL, 0);
+            me->MonsterYell("Habéis agotado mi paciencia. ¡Me desharé de vosotros!", LANG_UNIVERSAL, 0);
             me->PlayDirectSound(SOUND_AGGRO_1);
 
             events.RescheduleEvent(EVENT_INTRO_MOVE_CENTER, 0, 1);
@@ -401,14 +401,14 @@ public:
                             c->CastSpell(c, SPELL_PORTAL_BEAM, false);
                         if (Creature* c = me->SummonCreature(NPC_POWER_SPARK, FourSidesPos[random], TEMPSUMMON_MANUAL_DESPAWN, 0))
                             c->AI()->DoAction(1);
-                        me->MonsterTextEmote("A Power Spark forms from a nearby rift!", 0, true);
+                        me->MonsterTextEmote("¡Una chispa eléctrica se forma desde una grieta cercana!", 0, true);
                         events.RepeatEvent(urand(20000,30000));
                     }
                     break;
                 case EVENT_START_VORTEX_0:
                     {
                         bLockHealthCheck = true;
-                        me->MonsterYell("Watch helplessly as your hopes are swept away...", LANG_UNIVERSAL, 0);
+                        me->MonsterYell("¡Mirad indefensos cómo quiebro vuestras esperanzas!", LANG_UNIVERSAL, 0);
                         me->PlayDirectSound(SOUND_VORTEX);
                         EntryCheckPredicate pred(NPC_POWER_SPARK);
                         summons.DoAction(2, pred); // stop following
@@ -519,7 +519,7 @@ public:
                     break;
                 }
                 case EVENT_START_PHASE_2:
-                    me->MonsterYell("I had hoped to end your lives quickly, but you have proven more...resilient then I had anticipated. Nonetheless, your efforts are in vain, it is you reckless, careless mortals who are to blame for this war! I do what I must...And if it means your...extinction...THEN SO BE IT!", LANG_UNIVERSAL,0);
+                    me->MonsterYell("Esperaba acabar con vuestras vidas rápidamente, pero habéis resultado más... resistentes de lo que pensaba. Aun así, vuestros esfuerzos son en vano. Esta guerra es culpa vuestra, imprudentes mortales descuidados. Yo hago lo que debo... y si eso implica vuestra extinción... ¡QUE ASÍ SEA!", LANG_UNIVERSAL,0);
                     me->PlayDirectSound(SOUND_PHASE_1_END);
                     me->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_PACIFIED);
                     me->SendMeleeAttackStop();
@@ -544,7 +544,7 @@ public:
                     break;
                 }
                 case EVENT_START_PHASE_2_MOVE_TO_SIDE:
-                    me->MonsterYell("Few have experienced the pain I will now inflict upon you!", LANG_UNIVERSAL, 0);
+                    me->MonsterYell("¡Pocos han experimentado el dolor que voy a infligiros ahora!", LANG_UNIVERSAL, 0);
                     me->PlayDirectSound(SOUND_AGGRO_2);
                     me->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NON_ATTACKABLE | UNIT_FLAG_PACIFIED);
                     me->GetMotionMaster()->MovePoint(MI_POINT_CIRCLE_OUTSIDE_PH_2, Phase2NorthPos);
@@ -604,7 +604,7 @@ public:
                     break;
                 case EVENT_MOVE_TO_SURGE_OF_POWER:
                     {
-                        me->MonsterYell("You will not succeed while i draw breath!", LANG_UNIVERSAL, 0);
+                        me->MonsterYell("¡No lo conseguiréis mientras me quede aliento!", LANG_UNIVERSAL, 0);
                         me->PlayDirectSound(SOUND_DEEP_BREATH);
                         float angle = CenterPos.GetAngle(me);
                         me->GetMotionMaster()->MoveIdle();
@@ -614,7 +614,7 @@ public:
                     }
                     break;
                 case EVENT_SURGE_OF_POWER_WARNING:
-                    me->MonsterTextEmote("Malygos takes a deep breath.", 0, true);
+                    me->MonsterTextEmote("¡Malygos toma una respiración profunda!", 0, true);
                     events.PopEvent();
                     events.RescheduleEvent(EVENT_SPELL_SURGE_OF_POWER, 1500, 1);
                     break;
@@ -645,7 +645,7 @@ public:
                             events.CancelEventGroup(1);
                             summons.DespawnAll();
                             // start phase 3
-                            me->MonsterYell("ENOUGH! If you intend to reclaim Azeroth\'s magic, then you shall have it...", LANG_UNIVERSAL,0);
+                            me->MonsterYell("¡BASTA! ¡Si queréis la magia de Azeroth, la tendréis!", LANG_UNIVERSAL,0);
                             me->PlayDirectSound(SOUND_PHASE_2_END);
                             me->GetMotionMaster()->Clear();
                             me->GetMotionMaster()->MoveIdle();
@@ -701,7 +701,7 @@ public:
                     }
                     break;
                 case EVENT_SAY_PHASE_3_INTRO:
-                    me->MonsterYell("Now your benefactors make their appearance...But they are too late. The powers contained here are sufficient to destroy the world ten times over! What do you think they will do to you?", LANG_UNIVERSAL, 0);
+                    me->MonsterYell("Ahora aparecen vuestros benefactores, ¡pero llegan demasiado tarde! Los poderes aquí contenidos son suficientes para destruir el mundo diez veces. ¿Qué creéis que os harán a vosotros?", LANG_UNIVERSAL, 0);
                     me->PlayDirectSound(SOUND_PHASE_3_START);
                     events.PopEvent();
                     break;
@@ -740,7 +740,7 @@ public:
 
         void JustDied(Unit* killer)
         {
-            me->MonsterYell("UNTHINKABLE! The mortals will destroy... e-everything... my sister... what have you-", LANG_UNIVERSAL, 0);
+            me->MonsterYell("¡Impensable! ¡Los mortales lo destruirán... todo! ¿Hermana, qué has...?", LANG_UNIVERSAL, 0);
             me->PlayDirectSound(SOUND_DEATH);
             if (pInstance)
             {
@@ -1367,25 +1367,25 @@ public:
                     me->SummonGameObject(HEART_OF_MAGIC, 773.98f, 1275.97f, 266.254f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0);
 
                     me->PlayDirectSound(14406);
-                    me->MonsterYell("I did what I had to, brother. You gave me no alternative.", LANG_UNIVERSAL, 0);
+                    me->MonsterYell("Hice lo que tenía que hacer, hermano. No me diste otra alternativa.", LANG_UNIVERSAL, 0);
                     events.PopEvent();
                     events.RescheduleEvent(2, 6000);
                     break;
                 case 2:
                     me->PlayDirectSound(14407);
-                    me->MonsterYell("And so ends the Nexus War.", LANG_UNIVERSAL, 0);
+                    me->MonsterYell("Y así acaba la guerra del Nexo.", LANG_UNIVERSAL, 0);
                     events.PopEvent();
                     events.RescheduleEvent(3, 5000);
                     break;
                 case 3:
                     me->PlayDirectSound(14408);
-                    me->MonsterYell("This resolution pains me deeply, but the destruction, the monumental loss of life had to end. Regardless of Malygos\' recent transgressions, I will mourn his loss. He was once a guardian, a protector. This day, one of the world\'s mightiest has fallen.", LANG_UNIVERSAL, 0);
+                    me->MonsterYell("Esta resolución me duele mucho, pero la destrucción, la pérdida monumental de vida tenía que terminar. Independientemente de las recientes transgresiones de Malygos, voy a llorar su pérdida. Una vez fue un guardián, un protector. En este día, uno de los más poderosos del mundo ha caído.", LANG_UNIVERSAL, 0);
                     events.PopEvent();
                     events.RescheduleEvent(4, 22000);
                     break;
                 case 4:
                     me->PlayDirectSound(14409);
-                    me->MonsterYell("The red dragonflight will take on the burden of mending the devastation wrought on Azeroth. Return home to your people and rest. Tomorrow will bring you new challenges, and you must be ready to face them. Life... goes on.", LANG_UNIVERSAL, 0);
+                    me->MonsterYell("El vuelo de los dragones rojos tomará la carga de reparar la devastación forjada en Azeroth. Vuelve a casa a tu gente y descansa. El mañana te traerá nuevos desafíos, y debes estar preparado para enfrentarlos. La vida continua.", LANG_UNIVERSAL, 0);
                     events.PopEvent();
                     break;
             }
@@ -1480,7 +1480,7 @@ class spell_eoe_ph3_surge_of_power : public SpellScriptLoader
                                     if (Player* plr = p->ToPlayer())
                                     {
                                         WorldPacket data;
-                                        ChatHandler::BuildChatPacket(data, CHAT_MSG_RAID_BOSS_EMOTE, LANG_UNIVERSAL, caster, p, "Malygos fixes his eyes on you!");
+                                        ChatHandler::BuildChatPacket(data, CHAT_MSG_RAID_BOSS_EMOTE, LANG_UNIVERSAL, caster, p, "¡%s fija su mirada en ti!");
                                         plr->GetSession()->SendPacket(&data);
                                     }
                         }

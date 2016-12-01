@@ -25,13 +25,13 @@ enum DrakeGiverTexts
     GOSSIP_TEXTID_ETERNOS3                      = 13256,
 };
 
-#define GOSSIP_ITEM_DRAKES          "So where do we go from here?"
-#define GOSSIP_ITEM_BELGARISTRASZ1  "I want to fly on the wings of the Red Flight"
-#define GOSSIP_ITEM_BELGARISTRASZ2  "What abilities do Ruby Drakes have?"
-#define GOSSIP_ITEM_VERDISA1        "I want to fly on the wings of the Green Flight"
-#define GOSSIP_ITEM_VERDISA2        "What abilities do Emerald Drakes have?"
-#define GOSSIP_ITEM_ETERNOS1        "I want to fly on the wings of the Bronze Flight"
-#define GOSSIP_ITEM_ETERNOS2        "What abilities do Amber Drakes have?"
+#define GOSSIP_ITEM_DRAKES          "Entonces, ¿dónde vamos desde aquí?"
+#define GOSSIP_ITEM_BELGARISTRASZ1  "Quiero montar en las alas del vuelo rojo"
+#define GOSSIP_ITEM_BELGARISTRASZ2  "¿Qué habilidades tienen los Dracos Rubí?"
+#define GOSSIP_ITEM_VERDISA1        "Quiero montar en las alas del vuelo verde"
+#define GOSSIP_ITEM_VERDISA2        "¿Qué habilidades tienen los Dracos Esmeralda?"
+#define GOSSIP_ITEM_ETERNOS1        "Quiero montar en las alas del vuelo bronce"
+#define GOSSIP_ITEM_ETERNOS2        "¿Qué habilidades tienen los Dracos Ámbar?"
 
 #define HAS_ESSENCE(a) ((a)->HasItemCount(ITEM_EMERALD_ESSENCE) || (a)->HasItemCount(ITEM_AMBER_ESSENCE) || (a)->HasItemCount(ITEM_RUBY_ESSENCE))
 

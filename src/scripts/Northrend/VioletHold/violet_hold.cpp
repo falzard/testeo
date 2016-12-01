@@ -32,9 +32,9 @@ public:
 ** SINCLARI
 ***********/
 
-#define GOSSIP_START_EVENT  "Get your people to safety, we'll keep the Blue Dragonflight's forces at bay."
-#define GOSSIP_ITEM_1      "Activate the crystals when we get in trouble, right."
-#define GOSSIP_I_WANT_IN    "Sorry, I'm late! Can I get in to help my friends?"
+#define GOSSIP_START_EVENT  "Lleva tu gente a un lugar seguro, vamos a contener a las fuerzas del Vuelo Azul en la bahía."
+#define GOSSIP_ITEM_1      "Activa los cristales cuando estemos en problemas, ¿entendido?"
+#define GOSSIP_I_WANT_IN    "¡Disculpa, llego tarde! ¿Puedo entrar para ayudar a mis amigos?"
 
 class npc_vh_sinclari : public CreatureScript
 {

@@ -122,11 +122,11 @@ struct Speech
 
 const Speech MalygosIntroTexts[] =
 {
-    {14512, "Lesser beings, intruding here! A shame that your excess courage does not compensate for your stupidity!"},
-    {14513, "None but the blue dragonflight are welcome here! Perhaps this is the work of Alexstrasza? Well then, she has sent you to your deaths."},
-    {14514, "What could you hope to accomplish, to storm brazenly into my domain? To employ MAGIC? Against ME?"},
-    {14515, "I am without limits here... the rules of your cherished reality do not apply... In this realm, I am in control..."},
-    {14516, "I give you one chance. Pledge fealty to me, and perhaps I won\'t slaughter you for your insolence!"},
+    {14512, "¿¡Seres inferiores, inmiscuyéndose aquí!? ¡Es una lástima que vuestro exceso de valor no compense vuestra estupidez!"},
+    {14513, "Solo el Vuelo Azul es bienvenido aquí. ¿Quizá esto sea obra de Alexstrasza? ¡Bueno, entonces os ha enviado hacia vuestras muertes!"},
+    {14514, "¿Qué esperáis conseguir? ¿Adentrándoos descaradamente en mis dominios... para usar magia... contra MÍ?"},
+    {14515, "No tengo límites aquí. Las reglas de vuestra amada realidad no son aplicables aquí. ¡En este reino, yo tengo el control!"},
+    {14516, "Os daré una oportunidad. Juradme lealtad y quizá no os mate por vuestra insolencia."},
 };
 
 const uint32 MalygosIntroIntervals[] = {18000, 19000, 21000, 18000, 15000};
