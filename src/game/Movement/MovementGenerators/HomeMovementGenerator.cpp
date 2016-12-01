@@ -25,7 +25,6 @@ void HomeMovementGenerator<Creature>::DoFinalize(Creature* owner)
         //owner->SetWalk(true);
         owner->LoadCreaturesAddon(true);
         owner->AI()->JustReachedHome();
-        owner->SetSpawnHealth();
     }
     owner->m_targetsNotAcceptable.clear();
     owner->UpdateEnvironmentIfNeeded(2);
