@@ -17067,7 +17067,7 @@ void Player::SendCanTakeQuestResponse(uint32 msg) const
 
 void Player::SendQuestConfirmAccept(const Quest* quest, Player* pReceiver)
 { 
-    if (pReceiver)
+    if (!pReceiver)
     {
 		std::string strTitle = quest->GetTitle();
 
