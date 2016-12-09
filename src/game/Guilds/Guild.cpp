@@ -25,49 +25,49 @@ std::string _GetGuildEventString(GuildEvents event)
     switch (event)
     {
         case GE_PROMOTION:
-            return "Member promotion";
+            return "Promoción de miembro";
         case GE_DEMOTION:
-            return "Member demotion";
+            return "Miembro degradado";
         case GE_MOTD:
-            return "Guild MOTD";
+            return "MOTD de Hermandad";
         case GE_JOINED:
-            return "Member joined";
+            return "Miembro se unió";
         case GE_LEFT:
-            return "Member left";
+            return "Miembro ha salido";
         case GE_REMOVED:
-            return "Member removed";
+            return "Miembro eliminado";
         case GE_LEADER_IS:
-            return "Leader is";
+            return "El líder es";
         case GE_LEADER_CHANGED:
-            return "Leader changed";
+            return "Líder cambiado";
         case GE_DISBANDED:
-            return "Guild disbanded";
+            return "Hermandad disuelta";
         case GE_TABARDCHANGE:
-            return "Tabard change";
+            return "Cambio de tabardo";
         case GE_RANK_UPDATED:
-            return "Rank updated";
+            return "Rango actualizado";
         case GE_RANK_DELETED:
-            return "Rank deleted";
+            return "Rango eliminado";
         case GE_SIGNED_ON:
-            return "Member signed on";
+            return "Miembro se conectó";
         case GE_SIGNED_OFF:
-            return "Member signed off";
+            return "Miembro se desconectó";
         case GE_GUILDBANKBAGSLOTS_CHANGED:
-            return "Bank bag slots changed";
+            return "Ranuras de mochilas del banco";
         case GE_BANK_TAB_PURCHASED:
-            return "Bank tab purchased";
+            return "Pestaña del banco comprada";
         case GE_BANK_TAB_UPDATED:
-            return "Bank tab updated";
+            return "Pestaña del banco actualizada";
         case GE_BANK_MONEY_SET:
-            return "Bank money set";
+            return "Dinero del banco establecido";
         case GE_BANK_TAB_AND_MONEY_UPDATED:
-            return "Bank and money updated";
+            return "Dinero del banco actualizado";
         case GE_BANK_TEXT_CHANGED:
-            return "Bank tab text changed";
+            return "Texto de pestaña del banco cambiado";
         default:
             break;
     }
-    return "<None>";
+    return "<Ninguna>";
 }
 
 inline uint32 _GetGuildBankTabPrice(uint8 tabId)
@@ -1149,7 +1149,7 @@ bool Guild::Create(Player* pLeader, std::string const& name)
     m_leaderGuid = pLeader->GetGUID();
     m_name = name;
     m_info = "";
-    m_motd = "No message set.";
+    m_motd = "¡Sin mensaje establecido!";
     m_bankMoney = 0;
     m_createdDate = ::time(NULL);
     _CreateLogHolders();

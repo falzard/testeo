@@ -22,7 +22,7 @@ public:
     bool OnGossipHello(Player* player, Creature* creature)
     {
         if (IsEventActive(HALLOWEEN_EVENTID) && !player->HasAura(SPELL_TRICKED_OR_TREATED))
-            player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "Trick or Treat!", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+HALLOWEEN_EVENTID);
+            player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, "¡Truco o trato!", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF+HALLOWEEN_EVENTID);
 
         if (creature->IsQuestGiver())
             player->PrepareQuestMenu(creature->GetGUID());
@@ -31,7 +31,7 @@ public:
             player->ADD_GOSSIP_ITEM(GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_GOODS, GOSSIP_SENDER_MAIN, GOSSIP_ACTION_TRADE);
 
         if (creature->IsInnkeeper())
-            player->ADD_GOSSIP_ITEM(GOSSIP_ICON_INTERACT_1, "Make this inn my home.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INN);
+            player->ADD_GOSSIP_ITEM(GOSSIP_ICON_INTERACT_1, "Fija tu hogar en esta taberna.", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INN);
 
         player->TalkedToCreature(creature->GetEntry(), creature->GetGUID());
         player->SEND_GOSSIP_MENU(player->GetGossipTextId(creature), creature->GetGUID());
@@ -65,4 +65,3 @@ void AddSC_npc_innkeeper()
 {
     new npc_innkeeper;
 }
-

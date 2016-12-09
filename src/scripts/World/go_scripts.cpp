@@ -79,7 +79,7 @@ public:
         {
             if (Creature *cr = pGo->SummonCreature(28105, 6708.7f, 5115.45f, -18.3f, 0.7f, TEMPSUMMON_TIMED_DESPAWN_OUT_OF_COMBAT, 30000))
             {
-                cr->MonsterYell("My treasure! You no steal from Tartek, dumb big-tongue traitor thing. Tartek and nasty dragon going to kill you! You so dumb.", LANG_UNIVERSAL, 0);
+                cr->MonsterYell("¡Mi tesoro! Tu no robas a Tartek, tonto bocazas. ¡Tartek y dragon asqueroso van a matarte! Eres muy tonto...", LANG_UNIVERSAL, 0);
                 cr->AI()->AttackStart(pPlayer);
             }
         }        
@@ -529,7 +529,7 @@ enum DalaranCrystal
     QUEST_TELE_CRYSTAL_FLAG     = 12845
 };
 
-#define GO_TELE_TO_DALARAN_CRYSTAL_FAILED   "This teleport crystal cannot be used until the teleport crystal in Dalaran has been used at least once."
+#define GO_TELE_TO_DALARAN_CRYSTAL_FAILED   "Este cristal de teletransporte no puede usarse hasta que el cristal de teletransporte en Dalaran haya sido utilizado al menos una vez."
 
 class go_tele_to_dalaran_crystal : public GameObjectScript
 {
@@ -571,7 +571,7 @@ public:
 
 #define GOSSIP_FEL_CRYSTALFORGE_TEXT 31000
 #define GOSSIP_FEL_CRYSTALFORGE_ITEM_TEXT_RETURN 31001
-#define GOSSIP_FEL_CRYSTALFORGE_ITEM_1 "Purchase 1 Unstable Flask of the Beast for the cost of 10 Apexis Shards"
+#define GOSSIP_FEL_CRYSTALFORGE_ITEM_1 "Comprar 1 Unstable Flask of the Beast for the cost of 10 Apexis Shards"
 #define GOSSIP_FEL_CRYSTALFORGE_ITEM_5 "Purchase 5 Unstable Flask of the Beast for the cost of 50 Apexis Shards"
 #define GOSSIP_FEL_CRYSTALFORGE_ITEM_RETURN "Use the fel crystalforge to make another purchase."
 
