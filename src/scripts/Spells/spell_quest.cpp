@@ -3046,6 +3046,32 @@ public:
     }
 };
 
+// herald of war and life without regret portal spells
+class spell_59064_59439_portals : public SpellScriptLoader
+{
+public:
+    spell_59064_59439_portals() : SpellScriptLoader("spell_59064_59439_portals") { }
+
+    class spell_59064_59439_portals_SpellScript : public SpellScript
+    {
+        PrepareSpellScript(spell_59064_59439_portals_SpellScript);
+
+        void HandleScript(SpellEffIndex /*effIndex*/)
+        {
+            GetHitUnit()->CastSpell(GetHitUnit(), uint32(GetEffectValue()));
+        }
+
+        void Register()
+        {
+            OnEffectHitTarget += SpellEffectFn(spell_59064_59439_portals_SpellScript::HandleScript, EFFECT_0, SPELL_EFFECT_SCRIPT_EFFECT);
+        }
+    };
+
+    SpellScript* GetSpellScript() const
+    {
+        return new spell_59064_59439_portals_SpellScript();
+    }
+};
 
 void AddSC_quest_spell_scripts()
 {
