@@ -3144,4 +3144,5 @@ void AddSC_quest_spell_scripts()
     new spell_q12619_emblazon_runeblade_effect();
     new spell_q12919_gymers_grab();
     new spell_q12919_gymers_throw();
+    new spell_59064_59439_portals();
 }
