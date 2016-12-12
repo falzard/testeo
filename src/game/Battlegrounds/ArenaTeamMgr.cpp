@@ -12,6 +12,7 @@
 #include "Language.h"
 #include "ObjectAccessor.h"
 #include "Player.h"
+#include "ScriptMgr.h"
 
 ArenaTeamMgr::ArenaTeamMgr()
 {
@@ -137,10 +138,13 @@ void ArenaTeamMgr::DistributeArenaPoints()
     // Temporary structure for storing maximum points to add values for all players
     std::map<uint32, uint32> PlayerPoints;
 
-    // At first update all points for all team members
+     // At first update all points for all team members
     for (ArenaTeamContainer::iterator teamItr = GetArenaTeamMapBegin(); teamItr != GetArenaTeamMapEnd(); ++teamItr)
         if (ArenaTeam* at = teamItr->second)
+        {
             at->UpdateArenaPointsHelper(PlayerPoints);
+            sScriptMgr->OnBeforeUpdateArenaPoints(at, PlayerPoints);
+        }
 
     SQLTransaction trans = CharacterDatabase.BeginTransaction();
 
