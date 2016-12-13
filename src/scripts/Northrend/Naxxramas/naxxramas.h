@@ -130,5 +130,11 @@ enum NXSays
     SAY_CAT_DIED                    = 0
 };
 
+enum NXSounds
+{
+    // Background screams in Instance if Thaddius still alive, four of them from 8873 to 8876
+    SOUND_SCREAM = 8873
+};
+
 #endif
 

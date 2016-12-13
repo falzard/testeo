@@ -99,6 +99,8 @@ public:
             sapphironAchievement = true;
             heiganAchievement = true;
             immortalAchievement = 1;
+            // Timers
+            screamsTimer = 2 * MINUTE * IN_MILLISECONDS;
         }
 
         uint32 Encounters[MAX_ENCOUNTERS];
@@ -153,6 +155,9 @@ public:
         bool sapphironAchievement;
         bool heiganAchievement;
         uint32 immortalAchievement;
+
+        // Timers
+        uint32 screamsTimer;
 
         void HeiganEruptSections(uint32 section)
         {
@@ -626,6 +631,16 @@ public:
 
         void Update(uint32 diff)
         {
+            if (screamsTimer && Encounters[EVENT_THADDIUS] != DONE)
+            {
+                if (screamsTimer <= diff)
+                {
+                    instance->PlayDirectSoundToMap(SOUND_SCREAM + urand(0, 3));
+                    screamsTimer = (2 * MINUTE + urand(0, 30)) * IN_MILLISECONDS;
+                }
+                else
+                    screamsTimer -= diff;
+            }
             if (_speakTimer)
             {
                 Creature* kel = instance->GetCreature(_kelthuzadGUID);
