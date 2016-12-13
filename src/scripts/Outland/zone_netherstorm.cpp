@@ -690,6 +690,9 @@ public:
         {
             if (who->GetTypeId() == TYPEID_PLAYER)
                 PlayerGUID = who->GetGUID();
+            else if (Pet* pet = who->ToPet())
+                if (Player* player = who->GetOwner()->ToPlayer())
+                    PlayerGUID = player->GetGUID();
         }
 
         //void SpellHit(Unit* /*caster*/, const SpellInfo* /*spell*/)
@@ -846,7 +849,7 @@ public:
         void Reset()
         {
             me->RestoreFaction();
-            me->SetReactState(REACT_PASSIVE);
+            me->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_PACIFIED);
         }
     };
 };
