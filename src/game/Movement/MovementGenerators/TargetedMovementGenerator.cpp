@@ -30,6 +30,9 @@ void TargetedMovementGeneratorMedium<T,D>::_setTargetLocation(T* owner, bool ini
     if (owner->HasUnitState(UNIT_STATE_NOT_MOVE))
         return;
 
+    if (owner->HasUnitState(UNIT_STATE_CASTING) && !owner->CanMoveDuringChannel())
+        return;
+
     float x, y, z;
     bool isPlayerPet = owner->IsPet() && IS_PLAYER_GUID(owner->GetOwnerGUID());
     bool sameTransport = owner->GetTransport() && owner->GetTransport() ==  i_target->GetTransport();
@@ -206,7 +209,7 @@ bool TargetedMovementGeneratorMedium<T,D>::DoUpdate(T* owner, uint32 time_diff)
     }
 
     // prevent movement while casting spells with cast time or channel time
-    if (owner->HasUnitState(UNIT_STATE_CASTING))
+    if (owner->HasUnitState(UNIT_STATE_CASTING) && !owner->CanMoveDuringChannel())
     {
         bool stop = true;
         if (Spell* spell = owner->GetCurrentSpell(CURRENT_CHANNELED_SPELL))
