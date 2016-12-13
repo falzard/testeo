@@ -1398,6 +1398,10 @@ void Player::HandleDrowning(uint32 time_diff)
     if (!m_MirrorTimerFlags)
         return;
 
+    // Hack-fix for Ruby Dragonshire.
+    if (GetAreaId() == 4168)
+        return;
+
     // In water
     if (m_MirrorTimerFlags & UNDERWATER_INWATER)
     {
