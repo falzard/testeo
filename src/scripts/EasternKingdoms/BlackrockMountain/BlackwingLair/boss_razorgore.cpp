@@ -56,13 +56,21 @@ public:
 
     struct boss_razorgoreAI : public BossAI
     {
-        boss_razorgoreAI(Creature* creature) : BossAI(creature, BOSS_RAZORGORE) { }
+        boss_razorgoreAI(Creature* creature) : BossAI(creature, DATA_RAZORGORE_THE_UNTAMED)
+        {
+            Initialize();
+        }
 
-        void Reset()
+        void Initialize()
+        {
+            secondPhase = false;
+        }
+
+        void Reset() override
         {
             _Reset();
 
-            secondPhase = false;
+            Initialize();
             instance->SetData(DATA_EGG_EVENT, NOT_STARTED);
         }
 
@@ -92,7 +100,7 @@ public:
                 DoChangePhase();
         }
 
-        void DamageTaken(Unit*, uint32& damage, DamageEffectType, SpellSchoolMask)
+        void DamageTaken(Unit* /*who*/, uint32& damage, DamageEffectType, SpellSchoolMask)
         {
             if (!secondPhase)
                 damage = 0;
@@ -155,7 +163,7 @@ public:
     {
         if (InstanceScript* instance = go->GetInstanceScript())
             if (instance->GetData(DATA_EGG_EVENT) != DONE)
-                if (Creature* razor = ObjectAccessor::GetCreature(*go, instance->GetData64(DATA_RAZORGORE_THE_UNTAMED)))
+                if (Creature* razor = instance->GetCreature(DATA_RAZORGORE_THE_UNTAMED))
                 {
                     razor->Attack(player, true);
                     player->CastSpell(razor, SPELL_MINDCONTROL);
