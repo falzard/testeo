@@ -362,60 +362,6 @@ void ObjectMgr::LoadGossipMenuItemsLocales()
     sLog->outString();
 }
 
-void ObjectMgr::LoadAreaLocales()
-{
-    uint32 oldMSTime = getMSTime();
-    
-    _areaLocaleStore.clear();                             // need for reload case
-    
-    QueryResult result = WorldDatabase.Query("SELECT entry, name_loc1, name_loc2, name_loc3, name_loc4, name_loc5, name_loc6, name_loc7, name_loc8, name_loc9, name_loc10 FROM locales_area");
-    
-    if (!result)
-        return;
-    
-    do
-    {
-        Field* fields = result->Fetch();
-        
-        uint32 entry = fields[0].GetUInt32();
-        
-        AreaLocale & data = _areaLocaleStore[entry];
-        
-        for (uint8 i = 1; i < TOTAL_LOCALES; ++i)
-            AddLocaleString(fields[i].GetString(), LocaleConstant(i), data.Name);
-    }
-    while (result->NextRow());
-    
-    sLog->outInfo(LOG_FILTER_SERVER_LOADING, ">> Loaded %lu Area locale strings in %u ms", (unsigned long)_areaLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
-}
-
-void ObjectMgr::LoadChatChannelLocales()
-{
-    uint32 oldMSTime = getMSTime();
-    
-    _chatChannelLocaleStore.clear();                             // need for reload case
-    
-    QueryResult result = WorldDatabase.Query("SELECT entry, name_loc1, name_loc2, name_loc3, name_loc4, name_loc5, name_loc6, name_loc7, name_loc8, name_loc9, name_loc10 FROM locales_chat_channel");
-    
-    if (!result)
-        return;
-    
-    do
-    {
-        Field* fields = result->Fetch();
-        
-        uint32 entry = fields[0].GetUInt32();
-        
-        ChatChannelLocale & data = _chatChannelLocaleStore[entry];
-        
-        for (uint8 i = 1; i < TOTAL_LOCALES; ++i)
-            AddLocaleString(fields[i].GetString(), LocaleConstant(i), data.Name);
-    }
-    while (result->NextRow());
-    
-    sLog->outInfo(LOG_FILTER_SERVER_LOADING, ">> Loaded %lu Chat Channel locale strings in %u ms", (unsigned long)_chatChannelLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
-}
-
 void ObjectMgr::LoadPointOfInterestLocales()
 {
     uint32 oldMSTime = getMSTime();

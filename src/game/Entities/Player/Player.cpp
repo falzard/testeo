@@ -5695,22 +5695,14 @@ void Player::UpdateLocalChannels(uint32 newZone)
                         continue;                            // Already on the channel, as city channel names are not changing
 
                     char new_channel_name_buf[100];
+                    char const* currentNameExt;
 
-                    std::string currentNameExt, chatName=channel->pattern;
                     if (channel->flags & CHANNEL_DBC_FLAG_CITY_ONLY)
                         currentNameExt = sObjectMgr->GetTrinityStringForDBCLocale(LANG_CHANNEL_CITY);
                     else
                         currentNameExt = current_zone_name.c_str();
 
-                    int loc_idx=GetSession()->GetSessionDbLocaleIndex();
-                    if (loc_idx >= 0)
-                    {
-                        if (AreaLocale const* arealoc = sObjectMgr->GetAreaLocale(newZone))
-                            ObjectMgr::GetLocaleString(arealoc->Name, loc_idx, currentNameExt);
-                        if(ChatChannelLocale const* chatcloc=sObjectMgr->GetChatChannelLocale(channel->ChannelID))
-                            ObjectMgr::GetLocaleString(chatcloc->Name, loc_idx, chatName);
-                    }
-                    snprintf(new_channel_name_buf, 100, chatName.c_str(), currentNameExt.c_str());
+                    snprintf(new_channel_name_buf, 100, channel->pattern[m_session->GetSessionDbcLocale()], currentNameExt);
 
                     joinChannel = cMgr->GetJoinChannel(new_channel_name_buf, channel->ChannelID);
                     if (usedChannel)
@@ -5725,14 +5717,7 @@ void Player::UpdateLocalChannels(uint32 newZone)
                     }
                 }
                 else
-                {
-                    std::string chatName=channel->pattern;
-                    int loc_idx=GetSession()->GetSessionDbLocaleIndex();
-                    if (loc_idx >= 0)
-                        if(ChatChannelLocale const* chatcloc=sObjectMgr->GetChatChannelLocale(channel->ChannelID))
-                            ObjectMgr::GetLocaleString(chatcloc->Name, loc_idx, chatName);
-                    joinChannel = cMgr->GetJoinChannel(chatName, channel->ChannelID);
-                }
+                    joinChannel = cMgr->GetJoinChannel(channel->pattern[m_session->GetSessionDbcLocale()], channel->ChannelID);
             }
             else
                 removeChannel = usedChannel;
