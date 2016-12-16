@@ -2024,7 +2024,7 @@ bool Creature::_IsTargetAcceptable(const Unit* target) const
         return true;
 
     // if the target's victim is friendly, and the target is neutral, the target is acceptable
-    if (targetVictim && !IsNeutralToAll() && IsFriendlyTo(targetVictim))
+    if (targetVictim && IsHostileTo(target) && IsFriendlyTo(targetVictim)
         return true;
 
     // if the target's victim is not friendly, or the target is friendly, the target is not acceptable
