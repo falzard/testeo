@@ -5652,8 +5652,6 @@ void Player::ClearChannelWatch()
 void Player::UpdateLocalChannels(uint32 newZone)
 { 
     // pussywizard: mutex needed (tc changed opcode to THREAD UNSAFE)
-    static ACE_Thread_Mutex channelsLock;
-    TRINITY_GUARD(ACE_Thread_Mutex, channelsLock);
 
     if (GetSession()->PlayerLoading() && !IsBeingTeleportedFar())
         return;                                              // The client handles it automatically after loading, but not after teleporting
@@ -5693,16 +5691,6 @@ void Player::UpdateLocalChannels(uint32 newZone)
                 {
                     if (channel->flags & CHANNEL_DBC_FLAG_CITY_ONLY && usedChannel)
                         continue;                            // Already on the channel, as city channel names are not changing
-
-                    char new_channel_name_buf[100];
-                    char const* currentNameExt;
-
-                    if (channel->flags & CHANNEL_DBC_FLAG_CITY_ONLY)
-                        currentNameExt = sObjectMgr->GetTrinityStringForDBCLocale(LANG_CHANNEL_CITY);
-                    else
-                        currentNameExt = current_zone_name.c_str();
-
-                    snprintf(new_channel_name_buf, 100, channel->pattern[m_session->GetSessionDbcLocale()], currentNameExt);
 
                     joinChannel = cMgr->GetJoinChannel(new_channel_name_buf, channel->ChannelID);
                     if (usedChannel)
