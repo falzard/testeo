@@ -474,6 +474,8 @@ typedef UNORDERED_MAP<uint32, CreatureData> CreatureDataContainer;
 typedef UNORDERED_MAP<uint32, GameObjectData> GameObjectDataContainer;
 typedef std::map<TempSummonGroupKey, std::vector<TempSummonData> > TempSummonDataContainer;
 typedef UNORDERED_MAP<uint32, CreatureLocale> CreatureLocaleContainer;
+typedef UNORDERED_MAP<uint32, AreaLocale> AreaLocaleContainer;
+typedef UNORDERED_MAP<uint32, ChatChannelLocale> ChatChannelLocaleContainer;
 typedef UNORDERED_MAP<uint32, GameObjectLocale> GameObjectLocaleContainer;
 typedef UNORDERED_MAP<uint32, ItemLocale> ItemLocaleContainer;
 typedef UNORDERED_MAP<uint32, ItemSetNameLocale> ItemSetNameLocaleContainer;
@@ -950,6 +952,8 @@ class ObjectMgr
         void LoadBroadcastTextLocales();
         void LoadCreatureClassLevelStats();
         void LoadCreatureLocales();
+        void LoadAreaLocales();
+        void LoadChatChannelLocales();
         void LoadCreatureTemplates();
         void LoadCreatureTemplateAddons();
         void CheckCreatureTemplate(CreatureTemplate const* cInfo);
@@ -1150,6 +1154,18 @@ class ObjectMgr
         {
             PageTextLocaleContainer::const_iterator itr = _pageTextLocaleStore.find(entry);
             if (itr == _pageTextLocaleStore.end()) return NULL;
+            return &itr->second;
+        }
+        AreaLocale const* GetAreaLocale(uint32 entry) const
+        {
+            AreaLocaleContainer::const_iterator itr = _areaLocaleStore.find(entry);
+            if (itr == _areaLocaleStore.end()) return NULL;
+            return &itr->second;
+        }
+        ChatChannelLocale const* GetChatChannelLocale(uint32 entry) const
+        {
+            ChatChannelLocaleContainer::const_iterator itr = _chatChannelLocaleStore.find(entry);
+            if (itr == _chatChannelLocaleStore.end()) return NULL;
             return &itr->second;
         }
         PointOfInterestLocale const* GetPointOfInterestLocale(uint32 poi_id) const
@@ -1402,6 +1418,8 @@ class ObjectMgr
         EquipmentInfoContainer _equipmentInfoStore;
         LinkedRespawnContainer _linkedRespawnStore;
         CreatureLocaleContainer _creatureLocaleStore;
+        AreaLocaleContainer _areaLocaleStore;
+        ChatChannelLocaleContainer _chatChannelLocaleStore;
         GameObjectDataContainer _gameObjectDataStore;
         GameObjectLocaleContainer _gameObjectLocaleStore;
         GameObjectTemplateContainer _gameObjectTemplateStore;

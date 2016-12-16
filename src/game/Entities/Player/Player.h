@@ -840,6 +840,17 @@ enum PlayerCharmedAISpells
 #define MAX_PLAYER_SUMMON_DELAY                   (2*MINUTE)
 #define MAX_MONEY_AMOUNT                       (0x7FFFFFFF-1)
 
+struct AreaLocale
+{
+    StringVector Name;
+};
+
+struct ChatChannelLocale
+{
+    StringVector Name;
+};
+
+
 struct AccessRequirement
 {
     uint8  levelMin;

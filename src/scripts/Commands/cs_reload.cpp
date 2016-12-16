@@ -93,6 +93,7 @@ public:
             { "lfg_dungeon_rewards",          SEC_ADMINISTRATOR, true,  &HandleReloadLfgRewardsCommand,                 "" },
             { "locales_achievement_reward",   SEC_ADMINISTRATOR, true,  &HandleReloadLocalesAchievementRewardCommand,   "" },
             { "locales_creature",             SEC_ADMINISTRATOR, true,  &HandleReloadLocalesCreatureCommand,            "" },
+            { "locales_area",                 SEC_ADMINISTRATOR, true,  &HandleReloadLocalesAreaCommand,                "" },
             { "locales_creature_text",        SEC_ADMINISTRATOR, true,  &HandleReloadLocalesCreatureTextCommand,        "" },
             { "locales_gameobject",           SEC_ADMINISTRATOR, true,  &HandleReloadLocalesGameobjectCommand,          "" },
             { "locales_gossip_menu_option",   SEC_ADMINISTRATOR, true,  &HandleReloadLocalesGossipMenuOptionCommand,    "" },
@@ -1064,6 +1065,22 @@ public:
         return true;
     }
 
+    static bool HandleReloadLocalesAreaCommand(ChatHandler* handler, const char* /*args*/)
+    {
+        sLog->outInfo(LOG_FILTER_GENERAL, "Re-Loading Locales Area ... ");
+        sObjectMgr->LoadAreaLocales();
+        handler->SendGlobalGMSysMessage("DB table `locales_area` reloaded.");
+        return true;
+    }
+    
+    static bool HandleReloadLocalesChatChannelCommand(ChatHandler* handler, const char* /*args*/)
+    {
+        sLog->outInfo(LOG_FILTER_GENERAL, "Re-Loading Locales Chat Channel ... ");
+        sObjectMgr->LoadChatChannelLocales();
+        handler->SendGlobalGMSysMessage("DB table `locales_chat_channel` reloaded.");
+        return true;
+    }
+    
     static bool HandleReloadLocalesCreatureTextCommand(ChatHandler* handler, const char* /*args*/)
     {
         sLog->outString("Re-Loading Locales Creature Texts...");
