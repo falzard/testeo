@@ -119,10 +119,6 @@ void CreatureAI::MoveInLineOfSight(Unit* who)
     if (me->GetCreatureType() == CREATURE_TYPE_NON_COMBAT_PET) // non-combat pets should just stand there and look good;)
         return;
 
-    // Northshire Abbey - wolves fix. They can call assistance only outside the starting zone.
-    if (me->ToUnit()->getLevel() < 5 && me->GetAreaId() == 9)
-        return;
-
     // pussywizard: civilian, non-combat pet or any other NOT HOSTILE TO ANYONE (!)
     if (me->IsMoveInLineOfSightDisabled())
 		if (!who->IsInCombat() ||                                         // if not in combat, nothing more to do
