@@ -17,7 +17,7 @@ EndScriptData */
 
 enum TwilightCorrupter
 {
-    ITEM_FRAGMENT                   = 21149,
+    ITEM_FRAGMENT                   = 21147,
     NPC_TWILIGHT_CORRUPTER          = 15625,
     YELL_TWILIGHTCORRUPTOR_RESPAWN  = 0,
     YELL_TWILIGHTCORRUPTOR_AGGRO    = 1,
@@ -46,7 +46,7 @@ public:
 
         void Reset()
         {
-            KillCount                 = 0;
+            KillCount = 0;
         }
 
         void InitializeAI()
