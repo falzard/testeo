@@ -186,25 +186,66 @@ class npc_gnome_citizen : public CreatureScript
         }
 };
 
-#define STEAM_0 "Well, a bunch of useless gears, let's get to work!"
-#define STEAM_1 "I will teach you everything you must know how to be a real soldier!"
-#define STEAM_2 "First of all, you need to go drill."
-#define STEAM_3 "At the signal, show me how to welcome the commander for the charter!"
-#define STEAM_4 "So recruits saluted his commander!"
-#define STEAM_5 "Great job!"
-#define STEAM_6 "On the battlefield, it is important to intimidate the enemy furious battle roar!"
-#define STEAM_7 "As soon as I give the signal, show me what real fury!"
-#define STEAM_8 "Show me now furious!"
-#define STEAM_9 "Wow, nice!"
-#define STEAM_10 "Remember that the most important factor in any battle - is the spirit!"
-#define STEAM_11 "Get ready to show me how the soldiers should be happy to win!"
-#define STEAM_12 "Let's! Express your enthusiasm!"
-#define STEAM_13 "Terrific!"
-#define STEAM_14 "However, the most important in the battle - to be able to correctly mark earned sweat and blood of victory!"
-#define STEAM_15 "Execute me your best victory dance! Start the alarm!"
-#define STEAM_16 "And now - dance!"
-#define STEAM_17 "Great!"
-#define STEAM_18 "You - are the best squad of recruits that I have ever seen Let's repeat everything!"
+class npc_captain_tread_sparknozzle : public CreatureScript
+{
+public:
+    npc_captain_tread_sparknozzle() : CreatureScript("npc_captain_tread_sparknozzle") { }
+
+    struct npc_captain_tread_sparknozzleAI : public ScriptedAI
+    {
+        npc_captain_tread_sparknozzleAI(Creature* creature) : ScriptedAI(creature) { }
+
+        void MoveInLineOfSight(Unit* who)
+        {
+            ScriptedAI::MoveInLineOfSight(who);
+
+            if(who->GetTypeId() == TYPEID_PLAYER)
+            {
+                if(((Player*)who)->GetQuestStatus(25229) == QUEST_STATUS_INCOMPLETE)
+                {
+                    std::list<Creature*> GnomeList;
+                    me->GetCreatureListWithEntryInGrid(GnomeList, 39624, 7.5f);
+                    if(!GnomeList.empty())
+                    {
+                        for(std::list<Creature*>::const_iterator itr = GnomeList.begin(); itr != GnomeList.end(); ++itr)
+                        {
+                            if(Creature* creature = *itr)
+                            {
+                                creature->DespawnOrUnsummon();
+                                ((Player*)who)->KilledMonsterCredit(39624, 0);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    CreatureAI* GetAI(Creature* creature) const
+    {
+        return new npc_captain_tread_sparknozzleAI(creature);
+    }
+};
+
+#define STEAM_0 "Bueno, un montón de engranajes inútiles, ¡vamos a trabajar!"
+#define STEAM_1 "¡Os enseñaré todo lo que debéis saber sobre como ser un verdadero soldado!"
+#define STEAM_2 "En primer lugar, tenéis que entrenar un poco."
+#define STEAM_3 "¡A mi señal, mostrarme cómo dar un buen saludo a nuestro comandante!"
+#define STEAM_4 "¡Los reclutas saludaron a su comandante!"
+#define STEAM_5 "¡Buen trabajo!"
+#define STEAM_6 "¡En el campo de batalla, es importante intimidar al enemigo con un furioso rugido de batalla!"
+#define STEAM_7 "Tan pronto como de la señal, ¡mostrarme vuestra verdadera furia!"
+#define STEAM_8 "¡Muéstrate ahora furioso!"
+#define STEAM_9 "¡Guauuu, increible!"
+#define STEAM_10 "¡Recuerda que el factor más importante en cualquier batalla - es el espíritu!"
+#define STEAM_11 "¡Prepárate para mostrarme cómo los soldados deberían estar contentos al ganar!"
+#define STEAM_12 "¡Expresarme vuestro entusiasmo!"
+#define STEAM_13 "Fantástico!"
+#define STEAM_14 "Sin embargo, lo mas importante en una batalla - para poder quitaros el sudor y relajaros es... !bailar!"
+#define STEAM_15 "¡Ejecutad vuestro mejor baile de la victoria! ¡Comienza la alarma!"
+#define STEAM_16 "¡Y ahora - bailad!"
+#define STEAM_17 "¡Genial!"
+#define STEAM_18 "Vosotros ... sois el mejor escuadrón de reclutas que he visto, ¡Repitamos todo!"
 
 class npc_steamcrank : public CreatureScript
 {
@@ -394,17 +435,17 @@ class npc_steamcrank : public CreatureScript
         }
 };
 
-#define MEK_1_0    "Пусть они заберут наши жизни, но им никогда не забрать..."
-#define MEK_1_1    "...нашу ИЗОБРЕТАТЕЛЬНОСТЬ!"
-#define LIS_1_0    "Что? Я понятия не имею о чем он говорит! Это ужастно!"
-#define MEK_2_0    "Мы не позволим себя уничтожить! Мы не сдадимся без боя!"
-#define MEK_2_1    "Мы будем жить! Мы будем продолжать жить! Сегодня мы празднуем..."
-#define MEK_2_2    "...наш День Независимости!"
-#define LIS_2_0    "Кошмар! Хотя... может и ничего, если немного подчистить."
-#define MEK_3_0    "Вы должны тщательно обыскать каждую заправку, все дома, склады, фермы, уборные и конуры в этом районе."
-#define MEK_3_1    "Имя беглеца - Анжинер Термоштепсель."
-#define MEK_3_2    "Идите и задержите его."
-#define LIS_3_0    "Пожалуй, должно работать. Хотя чего-то ему явно не хватает."
+#define MEK_1_0 "Que nos quiten nuestras vidas, pero nunca tomarán ..."
+#define MEK_1_1 "... nuestro ingenio!"
+#define LIS_1_0 "¿Qué? ¡No tengo ni idea de lo que estaba diciendo! ¡Uzhastno!"
+#define MEK_2_0 "¡No nos dejaremos destruir, no nos rendiremos sin luchar!"
+#define MEK_2_1 "Vamos a vivir, vamos a seguir viviendo Hoy celebramos ..."
+#define MEK_2_2 "... ¡nuestro Día de la Independencia!"
+#define LIS_2_0 "¡Pesadillas! Aunque ... tal vez nada, con un poco de limpieza."
+#define MEK_3_0 "Debes buscar cuidadosamente todas las gasolineras, todas las casas, almacenes, granjas, perreras y baños de la zona".
+#define MEK_3_1 "fugitive Nombre - Mekgineer Thermaplugg".
+#define MEK_3_2 "Vaya y manténgalo".
+#define LIS_3_0 "Tal vez debería funcionar, aunque algo claramente no es suficiente".
 
 class npc_mekkatorque : public CreatureScript
 {
@@ -628,8 +669,8 @@ class spell_motivate_a_tron : public SpellScriptLoader
 
 void AddSC_ironforge()
 {
-    new npc_royal_historian_archesonus();
     new npc_gnome_citizen();
+    new npc_captain_tread_sparknozzle();
     new npc_steamcrank();
     new npc_mekkatorque();
     new npc_shoot_bunny();
