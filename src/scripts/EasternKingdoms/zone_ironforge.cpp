@@ -435,17 +435,17 @@ class npc_steamcrank : public CreatureScript
         }
 };
 
-#define MEK_1_0 "Que nos quiten nuestras vidas, pero nunca tomarán ..."
-#define MEK_1_1 "... nuestro ingenio!"
-#define LIS_1_0 "¿Qué? ¡No tengo ni idea de lo que estaba diciendo! ¡Uzhastno!"
-#define MEK_2_0 "¡No nos dejaremos destruir, no nos rendiremos sin luchar!"
-#define MEK_2_1 "Vamos a vivir, vamos a seguir viviendo Hoy celebramos ..."
-#define MEK_2_2 "... ¡nuestro Día de la Independencia!"
-#define LIS_2_0 "¡Pesadillas! Aunque ... tal vez nada, con un poco de limpieza."
-#define MEK_3_0 "Debes buscar cuidadosamente todas las gasolineras, todas las casas, almacenes, granjas, perreras y baños de la zona".
-#define MEK_3_1 "fugitive Nombre - Mekgineer Thermaplugg".
-#define MEK_3_2 "Vaya y manténgalo".
-#define LIS_3_0 "Tal vez debería funcionar, aunque algo claramente no es suficiente".
+#define MEK_1_0    "Que nos quiten nuestras vidas, pero nunca tomarán..."
+#define MEK_1_1    "...nuestro ingenio!"
+#define LIS_1_0    "¿Qué? ¡No tengo ni idea de lo que estaba diciendo! ¡Uzhastno!"
+#define MEK_2_0    "¡No nos dejaremos destruir, no nos rendiremos sin luchar!"
+#define MEK_2_1    "Vamos a vivir, vamos a seguir viviendo Hoy celebramos..."
+#define MEK_2_2    "¡Nuestro Día de la Independencia!"
+#define LIS_2_0    "¡Pesadillas! Aunque tal vez no sea nada, con un poco de limpieza."
+#define MEK_3_0    "Debes buscar cuidadosamente en todas las gasolineras, todas las casas, almacenes, granjas, perreras y baños de la zona."
+#define MEK_3_1    "fugitive Nombre - Mekgineer Thermaplugg."
+#define MEK_3_2    "Vaya y manténgalo"
+#define LIS_3_0    "Tal vez debería funcionar, aunque algo claramente no es suficiente."
 
 class npc_mekkatorque : public CreatureScript
 {
