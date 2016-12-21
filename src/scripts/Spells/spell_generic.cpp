@@ -1436,7 +1436,7 @@ public:
             return true;
         }
 
-        void HandleDummy(SpellEffIndex /*effIndex*/)
+        void HandleDummy(SpellEffIndex effIndex)
         {
             Unit* caster = GetCaster();
             if (Unit* target = GetHitUnit())
