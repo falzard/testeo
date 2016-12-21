@@ -1425,7 +1425,7 @@ public:
 
         bool Load()
         {
-            return GetHitUnit() && GetHitUnit()->ToCreature();
+            return GetOriginalCaster() && GetOriginalCaster()->GetTypeId() == TYPEID_PLAYER;
         }
 
         bool Validate(SpellInfo const* /*spellInfo*/)
@@ -1436,7 +1436,7 @@ public:
             return true;
         }
 
-        void HandleDummy(SpellEffIndex effIndex)
+        void HandleDummy(SpellEffIndex /*effIndex*/)
         {
             Unit* caster = GetCaster();
             if (Unit* target = GetHitUnit())
