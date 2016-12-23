@@ -329,7 +329,7 @@ public:
             sBattlegroundMgr->SendToBattleground(player, bg->GetInstanceID(), bgTypeId);
         }
 
-        handler->PSendSysMessage("Success! Players are now being teleported to the arena.");
+        handler->PSendSysMessage("¡Exitoso! ¡Los jugadores estan siendo teletransportados a la arena!");
         return true;
     }
 
@@ -424,9 +424,9 @@ public:
         if (haveVMap)
         {
             if (map->IsOutdoors(object->GetPositionX(), object->GetPositionY(), object->GetPositionZ()))
-                handler->PSendSysMessage("You are outdoors");
+                handler->PSendSysMessage("Estas al aire libre");
             else
-                handler->PSendSysMessage("You are indoors");
+                handler->PSendSysMessage("Estas en un interior");
         }
         else
             handler->PSendSysMessage("no VMAP available for area info");
@@ -682,7 +682,7 @@ public:
 
             if (map->IsBattlegroundOrArena())
             {
-                handler->PSendSysMessage("Can't summon to a battleground!");
+                handler->PSendSysMessage("¡No puedes invocar a un Campo de Batalla!");
                 handler->SetSentErrorMessage(true);
                 return false;
             }
@@ -691,7 +691,7 @@ public:
                 // pussywizard: prevent unbinding normal player's perm bind by just summoning him >_>
                 if (!target->GetSession()->GetSecurity())
                 {
-                    handler->PSendSysMessage("Only GMs can be summoned to an instance!");
+                    handler->PSendSysMessage("¡Solo los MJ's pueden ser invocados a una instancia!");
                     handler->SetSentErrorMessage(true);
                     return false;
                 }
@@ -1256,9 +1256,9 @@ public:
 
         if (!px2)
             teamId = TEAM_NEUTRAL;
-        else if (strncmp(px2, "horde", 6) == 0)
+        else if (strncmp(px2, "horda", 6) == 0)
             teamId = TEAM_HORDE;
-        else if (strncmp(px2, "alliance", 9) == 0)
+        else if (strncmp(px2, "alianza", 9) == 0)
             teamId = TEAM_ALLIANCE;
         else
             return false;
@@ -1300,9 +1300,9 @@ public:
 
         if (!*args)
             teamId = TEAM_NEUTRAL;
-        else if (strncmp((char*)args, "horde", argStr) == 0)
+        else if (strncmp((char*)args, "horda", argStr) == 0)
             teamId = TEAM_HORDE;
-        else if (strncmp((char*)args, "alliance", argStr) == 0)
+        else if (strncmp((char*)args, "alianza", argStr) == 0)
             teamId = TEAM_ALLIANCE;
         else
             return false;
@@ -1896,7 +1896,7 @@ public:
 
         handler->PSendSysMessage(LANG_PINFO_ACCOUNT, (target ? "" : handler->GetTrinityString(LANG_OFFLINE)), nameLink.c_str(), GUID_LOPART(targetGuid), userName.c_str(), accId, eMail.c_str(), security, lastIp.c_str(), lastLogin.c_str(), latency);
 
-        std::string bannedby = "unknown";
+        std::string bannedby = "desconocido";
         std::string banreason = "";
 
         stmt = LoginDatabase.GetPreparedStatement(LOGIN_SEL_PINFO_BANS);
@@ -1927,31 +1927,31 @@ public:
         switch (race)
         {
             case RACE_HUMAN:
-                raceStr = "Human";
+                raceStr = "Humano";
                 break;
             case RACE_ORC:
-                raceStr = "Orc";
+                raceStr = "Orco";
                 break;
             case RACE_DWARF:
-                raceStr = "Dwarf";
+                raceStr = "Enano";
                 break;
             case RACE_NIGHTELF:
-                raceStr = "Night Elf";
+                raceStr = "Elfo de la noche";
                 break;
             case RACE_UNDEAD_PLAYER:
-                raceStr = "Undead";
+                raceStr = "No-muerto";
                 break;
             case RACE_TAUREN:
                 raceStr = "Tauren";
                 break;
             case RACE_GNOME:
-                raceStr = "Gnome";
+                raceStr = "Gnomo";
                 break;
             case RACE_TROLL:
                 raceStr = "Troll";
                 break;
             case RACE_BLOODELF:
-                raceStr = "Blood Elf";
+                raceStr = "Elfo de Sangre";
                 break;
             case RACE_DRAENEI:
                 raceStr = "Draenei";
@@ -1961,34 +1961,34 @@ public:
         switch (Class)
         {
             case CLASS_WARRIOR:
-                ClassStr = "Warrior";
+                ClassStr = "Guerrero";
                 break;
             case CLASS_PALADIN:
-                ClassStr = "Paladin";
+                ClassStr = "Paladín";
                 break;
             case CLASS_HUNTER:
-                ClassStr = "Hunter";
+                ClassStr = "Cazador";
                 break;
             case CLASS_ROGUE:
-                ClassStr = "Rogue";
+                ClassStr = "Pícaro";
                 break;
             case CLASS_PRIEST:
-                ClassStr = "Priest";
+                ClassStr = "Sacerdote";
                 break;
             case CLASS_DEATH_KNIGHT:
-                ClassStr = "Death Knight";
+                ClassStr = "Caballero de la Muerte";
                 break;
             case CLASS_SHAMAN:
-                ClassStr = "Shaman";
+                ClassStr = "Chaman";
                 break;
             case CLASS_MAGE:
-                ClassStr = "Mage";
+                ClassStr = "Mago";
                 break;
             case CLASS_WARLOCK:
-                ClassStr = "Warlock";
+                ClassStr = "Brujo";
                 break;
             case CLASS_DRUID:
-                ClassStr = "Druid";
+                ClassStr = "Druida";
                 break;
         }
 
@@ -2000,7 +2000,7 @@ public:
 
         // Add map, zone, subzone and phase to output
         int locale = handler->GetSessionDbcLocale();
-        std::string areaName = "<unknown>";
+        std::string areaName = "<Desconocido>";
         std::string zoneName = "";
 
         MapEntry const* map = sMapStore.LookupEntry(mapId);
@@ -2020,7 +2020,7 @@ public:
             if (!zoneName.empty())
                 handler->PSendSysMessage(LANG_PINFO_MAP_ONLINE, map->name[locale], zoneName.c_str(), areaName.c_str(), phase);
             else
-                handler->PSendSysMessage(LANG_PINFO_MAP_ONLINE, map->name[locale], areaName.c_str(), "<unknown>", phase);
+                handler->PSendSysMessage(LANG_PINFO_MAP_ONLINE, map->name[locale], areaName.c_str(), "<Desconocido>", phase);
         }
         else
            handler->PSendSysMessage(LANG_PINFO_MAP_OFFLINE, map->name[locale], areaName.c_str());
@@ -2030,7 +2030,7 @@ public:
             uint32 gold = guildMoney /GOLD;
             uint32 silv = (guildMoney % GOLD) / SILVER;
             uint32 copp = (guildMoney % GOLD) % SILVER;
-            handler->PSendSysMessage("Guild: %s, members: %u, gb money: %ug %us %uc, is guild leader: %s", guildName.c_str(), guildMemberCount, gold, silv, copp, guildIsLeader ? "yes" : "no");
+            handler->PSendSysMessage("Hermandad: %s, miembros: %u, gb Dinero: %ug %us %uc, Jefe de hermandad: %s", guildName.c_str(), guildMemberCount, gold, silv, copp, guildIsLeader ? "Si" : "No");
         }
 
         return true;
@@ -2078,7 +2078,7 @@ public:
             return false;
 
         char const* muteReason = strtok(nullptr, "\r");
-        std::string muteReasonStr = "No reason";
+        std::string muteReasonStr = "Sin motivo";
         if (muteReason != nullptr)
             muteReasonStr = muteReason;
 
@@ -2199,7 +2199,7 @@ public:
             return false;
         }
 
-        handler->PSendSysMessage(LANG_MOVEGENS_LIST, (unit->GetTypeId() == TYPEID_PLAYER ? "Player" : "Creature"), unit->GetGUIDLow());
+        handler->PSendSysMessage(LANG_MOVEGENS_LIST, (unit->GetTypeId() == TYPEID_PLAYER ? "Jugador" : "Criatura"), unit->GetGUIDLow());
 
         MotionMaster* motionMaster = unit->GetMotionMaster();
         float x, y, z;
@@ -2210,7 +2210,7 @@ public:
             MovementGenerator* movementGenerator = motionMaster->GetMotionSlot(i);
             if (!movementGenerator)
             {
-                handler->SendSysMessage("Empty");
+                handler->SendSysMessage("Vacío");
                 continue;
             }
 
@@ -2692,14 +2692,14 @@ public:
         // Creatures with family 0 crashes the server
         if (!creatrueTemplate->family)
         {
-            handler->PSendSysMessage("This creature cannot be tamed. (family id: 0).");
+            handler->PSendSysMessage("Esta criatura no se puede domesticar. (family id: 0).");
             handler->SetSentErrorMessage(true);
             return false;
         }
 
         if (player->GetPetGUID())
         {
-            handler->PSendSysMessage("You already have a pet");
+            handler->PSendSysMessage("Ya tienes una mascota");
             handler->SetSentErrorMessage(true);
             return false;
         }
@@ -2758,7 +2758,7 @@ public:
 
         if (!pet)
         {
-            handler->PSendSysMessage("You have no pet");
+            handler->PSendSysMessage("No tienes ninguna mascota");
             handler->SetSentErrorMessage(true);
             return false;
         }
@@ -2786,7 +2786,7 @@ public:
         uint32 spellDifficultyId = sSpellMgr->GetSpellDifficultyId(spellId);
         if (bounds.first != bounds.second || spellDifficultyId)
         {
-            handler->PSendSysMessage("Spell %u cannot be learnt using a command!", spellId);
+            handler->PSendSysMessage("¡El hechizo %u no se puede aprender utilizando un comando!", spellId);
             handler->SetSentErrorMessage(true);
             return false;
         }
@@ -2794,14 +2794,14 @@ public:
         // Check if pet already has it
         if (pet->HasSpell(spellId))
         {
-            handler->PSendSysMessage("Pet already has spell: %u", spellId);
+            handler->PSendSysMessage("La mascota ya tiene el hechizo: %u", spellId);
             handler->SetSentErrorMessage(true);
             return false;
         }
 
         pet->learnSpell(spellId);
 
-        handler->PSendSysMessage("Pet has learned spell %u", spellId);
+        handler->PSendSysMessage("La mascota aprendió el hechizo %u", spellId);
         return true;
     }
 
@@ -2814,7 +2814,7 @@ public:
         Pet* pet = player->GetPet();
         if (!pet)
         {
-            handler->PSendSysMessage("You have no pet");
+            handler->PSendSysMessage("No tienes mascota");
             handler->SetSentErrorMessage(true);
             return false;
         }
@@ -2824,7 +2824,7 @@ public:
         if (pet->HasSpell(spellId))
             pet->removeSpell(spellId, false);
         else
-            handler->PSendSysMessage("Pet doesn't have that spell");
+            handler->PSendSysMessage("La mascota no tiene ese hechizo");
 
         return true;
     }
@@ -3047,20 +3047,20 @@ public:
 
                 std::string flags;
                 if (slot.flags & MEMBER_FLAG_ASSISTANT)
-                    flags = "Assistant";
+                    flags = "Asistente";
 
                 if (slot.flags & MEMBER_FLAG_MAINTANK)
                 {
                     if (!flags.empty())
                         flags.append(", ");
-                    flags.append("MainTank");
+                    flags.append("TanquePrincipal");
                 }
 
                 if (slot.flags & MEMBER_FLAG_MAINASSIST)
                 {
                     if (!flags.empty())
                         flags.append(", ");
-                    flags.append("MainAssist");
+                    flags.append("AsistentePrincipal");
                 }
 
                 if (flags.empty())

@@ -1335,8 +1335,8 @@ public:
         uint32 count = 0;
         uint32 maxResults = sWorld->getIntConfig(CONFIG_MAX_RESULTS_LOOKUP_COMMANDS);
 
-        const char* name_races[RACE_DRAENEI] = {"Human", "Orc", "Dwarf", "Night Elf", "Undead", "Tauren", "Gnome", "Troll", "", "Blood Elf", "Draenei"};
-        const char* name_classes[CLASS_DRUID] = {"Warrior", "Paladin", "Hunter", "Rogue", "Priest", "Death Knight", "Shaman", "Mage", "Warlock", "", "Druid"};
+        const char* name_races[RACE_DRAENEI] = {"Humano", "Orco", "Enano", "Elfo de la noche", "No-muerto", "Tauren", "Gnomo", "Troll", "", "Elfo de Sangre", "Draenei"};
+        const char* name_classes[CLASS_DRUID] = {"Guerrero", "Paladín", "Cazador", "Pícaro", "Sacerdote", "Caballero de la Muerte", "Chamán", "Mago", "Brujo", "", "Druida"};
 
         do
         {

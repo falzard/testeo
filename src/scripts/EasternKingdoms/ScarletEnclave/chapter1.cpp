@@ -139,7 +139,7 @@ class spell_q12641_death_comes_from_on_high_summon_ghouls : public SpellScriptLo
         }
 };
 
-#define GOSSIP_ACCEPT_DUEL      "I challenge you, death knight!"
+#define GOSSIP_ACCEPT_DUEL      "¡Te reto a un duelo, Caballero de la Muerte!"
 
 enum deathsChallenge
 {
