@@ -108,16 +108,16 @@ public:
             switch (phase)
             {
                 case 1:
-                    me->MonsterWhisper("You think that you can get rid of me through meditation?", summoner->ToPlayer());
+                    me->MonsterWhisper("¿Crees que puedes librarte de mí a través de la meditación?", summoner->ToPlayer());
                     return;
                 case 2:
-                    me->MonsterWhisper("Fool! I will destroy you and finally become that which has been building inside of you all these years!", summoner->ToPlayer());
+                    me->MonsterWhisper("¡Imbécil! Te destruiré y finalmente serás lo que ha estado construyendo dentro de ti todos estos años!", summoner->ToPlayer());
                     return;
                 case 3:
-                    me->MonsterWhisper("You cannot defeat me. I'm an inseparable part of you!", summoner->ToPlayer());
+                    me->MonsterWhisper("No puedes derrotarme. ¡Soy una parte inseparable de tí!", summoner->ToPlayer());
                     return;
                 case 4:
-                    me->MonsterWhisper("NOOOOOOOoooooooooo!", summoner->ToPlayer());
+                    me->MonsterWhisper("¡NOOOOOOOoooooooooo!", summoner->ToPlayer());
                     me->SetLevel(summoner->getLevel());
                     me->setFaction(14);
                     if (me->GetExactDist(summoner) < 50.0f)

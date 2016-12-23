@@ -257,7 +257,7 @@ public:
 ## npc_corastrasza
 ######*/
 
-#define GOSSIP_ITEM_C_1 "I... I think so..."
+#define GOSSIP_ITEM_C_1 "Yo... Yo creo que sí..."
 
 enum Corastrasza
 {
@@ -305,7 +305,7 @@ public:
 ## npc_iruk
 ######*/
 
-#define GOSSIP_ITEM_I  "<Search corpse for Issliruk's Totem.>"
+#define GOSSIP_ITEM_I  "<Buscar cadáver para Totem de Issliruk.>"
 
 enum Iruk
 {
@@ -1079,9 +1079,9 @@ enum HiddenCultist
     SAY_HIDDEN_CULTIST_4                        = 3
 };
 
-const char* GOSSIP_ITEM_TOM_HEGGER = "What do you know about the Cult of the Damned?";
-const char* GOSSIP_ITEM_GUARD_MITCHELLS = "How long have you worked for the Cult of the Damned?";
-const char* GOSSIP_ITEM_SALTY_JOHN_THORPE = "I have a reason to believe you're involved in the cultist activity";
+const char* GOSSIP_ITEM_TOM_HEGGER = "¿Qué sabes sobre el Culto de los Malditos?";
+const char* GOSSIP_ITEM_GUARD_MITCHELLS = "¿Cuánto tiempo has trabajado para el Culto de los Malditos?";
+const char* GOSSIP_ITEM_SALTY_JOHN_THORPE = "Tengo razones para creer que estás involucrado en la actividad cultista";
 
 class npc_hidden_cultist : public CreatureScript
 {

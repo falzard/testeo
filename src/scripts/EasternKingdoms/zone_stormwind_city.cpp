@@ -31,7 +31,7 @@ EndContentData */
 ## npc_archmage_malin
 ######*/
 
-#define GOSSIP_ITEM_MALIN "Can you send me to Theramore? I have an urgent message for Lady Jaina from Highlord Bolvar."
+#define GOSSIP_ITEM_MALIN "¿Puedes enviarme a Theramore? Tengo un mensaje urgente para Lady Jaina Valiente del Alto señor Bolvar Fordragón."
 
 class npc_archmage_malin : public CreatureScript
 {
@@ -139,10 +139,10 @@ public:
 ## npc_lady_katrana_prestor
 ######*/
 
-#define GOSSIP_ITEM_KAT_1 "Pardon the intrusion, Lady Prestor, but Highlord Bolvar suggested that I seek your advice."
-#define GOSSIP_ITEM_KAT_2 "My apologies, Lady Prestor."
-#define GOSSIP_ITEM_KAT_3 "Begging your pardon, Lady Prestor. That was not my intent."
-#define GOSSIP_ITEM_KAT_4 "Thank you for your time, Lady Prestor."
+#define GOSSIP_ITEM_KAT_1 "Perdón por mi intrusión, Lady Prestor, pero el Alto Señor Bolvar Fordragón me ha sugerido que busque tu consejo."
+#define GOSSIP_ITEM_KAT_2 "Mis disculpas, Lady Prestor."
+#define GOSSIP_ITEM_KAT_3 "Le pido disculpas, Lady Prestor. Esa no fue mi intención."
+#define GOSSIP_ITEM_KAT_4 "Gracias por su tiempo, Lady Prestor."
 
 class npc_lady_katrana_prestor : public CreatureScript
 {

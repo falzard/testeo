@@ -32,15 +32,15 @@ QUEST Conversing With the Depths (12032)
 #define DEEPDIVING_PEARL_BUFF 41273
 #define NPC_OACHANOA 26648
 #define NPC_CONVERSING_WITH_THE_DEPTHS_TRIGGER 70100
-#define OACHANOA_T_1_1 "Little "
-#define OACHANOA_T_1_2 ", why do you call me forth? Are you working with the trolls of this land? Have you come to kill me and take my power as your own?"
-#define OACHANOA_T_2 "I sense uncertainty in you, and I do not trust it whether you are with them, or not. If you wish my augury for the Kalu'ak, you will have to prove yourself first."
-#define OACHANOA_T_3 "I will lay a mild compulsion upon you. Jump into the depths before me so that you put yourself into my element and thereby display your submission."
-#define OACHANOA_T_4_1 "Well done, "
-#define OACHANOA_T_4_2 ". Your display of respect is duly noted. Now, I have information for you that you must convey to the Kalu'ak."
-#define OACHANOA_T_5 "Simply put, you must tell the tuskarr that they cannot run. If they do so, their spirits will be destroyed by the evil rising within Northrend."
-#define OACHANOA_T_6 "Tell the mystic that his people are to stand and fight alongside the Horde and Alliance against the forces of Malygos and the Lich King."
-#define OACHANOA_T_7_1 "Now swim back with the knowledge I have granted you. Do what you can for them "
+#define OACHANOA_T_1_1 "¿Pequeño "
+#define OACHANOA_T_1_2 ", por qué me llamas? ¿Estás trabajando con los trolls de esta tierra? ¿Has venido a matarme y a tomar mi poder como el tuyo propio?"
+#define OACHANOA_T_2 "Siento incertidumbre en ti, y no confío en que estés con ellos, o no. Si tú deseas mi augurio para el Kalu'ak, tendrás que probarte primero."
+#define OACHANOA_T_3 "Te impondré una leve obligación. Salta a las profundidades antes que yo, para que te ubiques en mi elemento y por lo tanto muestres tu sumisión."
+#define OACHANOA_T_4_1 "Bien hecho, "
+#define OACHANOA_T_4_2 ". Tu demostración de respeto será debidamente anotada. Ahora, tengo información para ti que debes de transmitir a los Kalu'ak."
+#define OACHANOA_T_5 "En pocas palabras, debes decir a los tuskarr que no deben correr. Si lo hacen, sus espíritus serán destruidos por el mal que se levanta dentro de Rasganorte."
+#define OACHANOA_T_6 "Dile al místico que su pueblo debe estar y luchar junto a la Horda y la Alianza contra las fuerzas de Malygos y el Rey Exánime."
+#define OACHANOA_T_7_1 "Ahora regresa con el conocimiento que te he concedido. Haz lo que puedas por ellos "
 
 class npc_conversing_with_the_depths_trigger : public CreatureScript
 {
@@ -211,7 +211,7 @@ public:
                                 Reset();
                                 return;
                             }
-                            const char * name_races[RACE_DRAENEI] = {"human", "orc", "dwarf", "nightelf", "undead", "tauren", "gnome", "troll", "", "bloodelf", "draenei"};
+                            const char * name_races[RACE_DRAENEI] = {"humano", "orco", "enano", "elfo de la noche", "no-muerto", "tauren", "gnomo", "troll", "", "elfo de sangre", "draenei"};
                             if( p->getRace() > 11 )
                             {
                                 Reset();
@@ -347,13 +347,13 @@ public:
             {
                 case EVENT_START_EVENT:
                     if (Creature* cr = getFuture())
-                        cr->MonsterWhisper(IsFuture() ? "Hey there, $N, don't be alarmed. It's me... you... from the future. I'm here to help." : "Whoa! You're me, but from the future! Hey, my equipment got an upgrade! Cool!", getSummoner());
+                        cr->MonsterWhisper(IsFuture() ? "Hola, $N, no te asustes. Soy yo... tu yo... del futuro. Estoy aquí para ayudar." : "¡Waau! ¡Eres mi yo, pero del futuro! ¡Hey, mi equipo se ha mejorado! ¡Genial!", getSummoner());
                     events.PopEvent();
                     events.ScheduleEvent(EVENT_FIGHT_1, 7000);
                     break;
                 case EVENT_FIGHT_1:
                     if (Creature* cr = getFuture())
-                        cr->MonsterWhisper(IsFuture() ? "Heads up... here they come. I'll help as much as I can. Let's just keep them off the hourglass!" : "Here come the Infinites! I've got to keep the hourglass safe. Can you help?", getSummoner());
+                        cr->MonsterWhisper(IsFuture() ? "Levantemos las cabezas ... aquí vienen. Te ayudaré todo lo que pueda. Vamos a mantenerlos fuera del reloj de arena!" : "¡Aquí vienen los Infinitos! Tengo que mantener el reloj de arena seguro. ¿Puedes ayudarme?", getSummoner());
                     events.PopEvent();
                     events.ScheduleEvent(EVENT_FIGHT_2, 6000);
                     break;
@@ -407,14 +407,14 @@ public:
                     if (Player* player = getSummoner())
                         player->GroupEventHappens(IsFuture() ? QUEST_MYSTERY_OF_THE_INFINITE : QUEST_MYSTERY_OF_THE_INFINITE_REDUX, me);
 
-                    me->MonsterWhisper(IsFuture() ? "Look, $N, the hourglass has revealed Nozdormu!" : "What the heck? Nozdormu is up there!", getSummoner());
+                    me->MonsterWhisper(IsFuture() ? "¡Mira, $N, el reloj de arena ha revelado a Nozdormu!" : "¿Qué demonios? ¡Nozdormu está ahí arriba!", getSummoner());
                     events.PopEvent();
                     events.ScheduleEvent(EVENT_FINISH_EVENT, 6000);
                     break;
                 }
                 case EVENT_FINISH_EVENT:
                 {
-                    me->MonsterWhisper(IsFuture() ? "Farewell, $N. Keep us alive and get some better equipment!" : "I feel like I'm being pulled away through time. Thanks for the help....", getSummoner());
+                    me->MonsterWhisper(IsFuture() ? "Adiós, $N. ¡Mantente con vida y consigue un mejor equipo!" : "Siento como si me estuvieran alejando con el tiempo. Gracias por la ayuda....", getSummoner());
                     events.PopEvent();
                     me->DespawnOrUnsummon(500);
                     if (getFuture())
@@ -429,14 +429,14 @@ public:
             std::string text = "";
             switch(urand(0, IsFuture() ? 7 : 5))
             {
-                case 0: text = IsFuture() ? "What? Am I here alone. We both have a stake at this, you know!" : "This equipment looks cool and all, but couldn't we have done a little better? Are you even raiding?"; break;
-                case 1: text = IsFuture() ? "No matter what, you can't die, because would mean that I would cease to exist, right? But, I was here before when I was you. I'm so confused!" : "Chromie said that if I don't do this just right, I might wink out of existence. If I go, then you go!"; break;
-                case 2: text = IsFuture() ? "Sorry, but Chromie said that I couldn't reveal anything about your future to you. She said that if I did, I would cease to exist." : "I just want you to know that if we get through this alive, I'm making sure that we turn out better than you. No offense."; break;
-                case 3: text = IsFuture() ? "Look at you fight; no wonder I turned to drinking." : "Looks like I'm an underachiever."; break;
-                case 4: text = IsFuture() ? "Wow, I'd forgotten how inexperienced I used to be." : "Wait a minute! If you're here, then that means that in the not-so-distant future I'm going to be you helping me? Are we stuck in a time loop?!"; break;
-                case 5: text = IsFuture() ? "I can't believe that I used to wear that." : "I think I'm going to turn to drinking after this."; break;
-                case 6: text = "Listen. I'm not supposed to tell you this, but there's going to be this party that you're invited to. Whatever you do, DO NOT DRINK THE PUNCH!"; break;
-                case 7: text = "Wish I could remember how many of the Infinite Dragonflight were going to try to stop you. This fight was so long ago."; break;
+                case 0: text = IsFuture() ? "¿Qué? Estoy aquí solo. Ambos tenemos una estaca en esto, ¿sabes? ":" Este equipo se ve bien y todo, ¿pero no podríamos haberlo hecho un poco mejor? ¿Estas asaltando?"; break;
+                case 1: text = IsFuture() ? "No importa lo que sea, no puedes morir, porque eso significaría que yo dejaría de existir ¿verdad? Pero, yo estaba aquí cuando yo era tú. ¡Estoy tan confundido!" : "Chromie dijo que si no hacía esto bien, podría desaparecer para siempre. Si yo me voy, ¡tu te irás!"; break;
+                case 2: text = IsFuture() ? "Lo siento, pero Chromie me dijo que no podía revelar nada sobre tu futuro. Ella dijo que si lo hiciese, dejaría de existir." : "Sólo quiero que sepas que si conseguimos salir de esta, me estoy asegurando de que salgamos mejor de lo que estás. No te ofendas."; break;
+                case 3: text = IsFuture() ? "Veo como luchas; No me extraña porque volví a beber." : "Parece que soy un fracasado."; break;
+                case 4: text = IsFuture() ? "Vaya, había olvidado lo inexperto que solía ser." : "¡Espera un minuto! Si estás aquí, ¿entonces eso significa que en un futuro no tan lejano voy a estar ayudándome? ¡¿Estamos atrapados en un bucle de tiempo ?!"; break;
+                case 5: text = IsFuture() ? "No puedo creer que llevase puesto eso." : "Creo que voy a volver a beber después de esto."; break;
+                case 6: text = "Escucha. Se supone que no debería decirte esto, pero va a haber una fiesta a la que estás invitado. Hagas lo que hagas, ¡NO BEBAS EL PONCHE!"; break;
+                case 7: text = "Ojalá pudiese recordar cuántos de los Vuelo Infinito iban a tratar de detenerte. Esta pelea fue hace tanto tiempo."; break;
             }
 
             if (Creature* cr = getFuture())
