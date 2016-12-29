@@ -307,8 +307,8 @@ public:
 ## npc_razael_and_lyana
 ######*/
 
-#define GOSSIP_RAZAEL_REPORT "High Executor Anselm wants a report on the situation."
-#define GOSSIP_LYANA_REPORT "High Executor Anselm requests your report."
+#define GOSSIP_RAZAEL_REPORT "El Sumo ejecutor Anselm quiere un informe de la situación."
+#define GOSSIP_LYANA_REPORT "Sumo ejecutor Anselm te solicita un informe."
 
 enum Razael
 {
