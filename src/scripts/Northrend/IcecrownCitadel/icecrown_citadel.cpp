@@ -3498,6 +3498,7 @@ class npc_icc_gauntlet_controller : public CreatureScript
                 if (param == ACTION_START_GAUNTLET)
                 {
                     Talk(SAY_INIT);
+                    me->PlayDirectSound(17167);
                     me->setActive(true);
                     events.Reset();
                     events.SetPhase(0);
