@@ -81,7 +81,7 @@ public:
             if ((!me->GetVictim() || me->GetVictim()->GetEntry() != NPC_ZOMBIE_CHOW) && who->GetEntry() == NPC_ZOMBIE_CHOW && me->IsWithinDistInMap(who, 15))
             {
                 SetGazeOn(who);
-                me->MonsterTextEmote("?Gluth busca un zombie cercano para devorarlo!", 0, false);
+                me->MonsterTextEmote("?Gluth busca un zombie cercano para devorar!", 0, false);
             }
             else
                 ScriptedAI::MoveInLineOfSight(who);
