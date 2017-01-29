@@ -146,7 +146,7 @@ public:
             switch (events.GetEvent())
             {
                 case EVENT_SPELL_WEB_SPRAY:
-                    me->MonsterTextEmote("%s sprays strands of web everywhere!", 0, true);
+                    me->MonsterTextEmote("¡Maexxna rocía hebras de telaraña por todas partes!", 0, true);
                     me->CastSpell(me, RAID_MODE(SPELL_WEB_SPRAY_10, SPELL_WEB_SPRAY_25), true);
                     events.RepeatEvent(40000);
                     break;
@@ -159,7 +159,7 @@ public:
                     events.RepeatEvent(30000);
                     break;
                 case EVENT_SUMMON_SPIDERLINGS:
-                    me->MonsterTextEmote("Spiderlings appear on the web!", 0, true);
+                    me->MonsterTextEmote("¡Pequeñas arañas descienden de la telaraña!", 0, true);
                     for (uint8 i = 0; i < 8; ++i)
                         me->SummonCreature(NPC_MAEXXNA_SPIDERLING, me->GetPositionX(), me->GetPositionY(), me->GetPositionZ(), me->GetOrientation());
                     events.RepeatEvent(40000);
@@ -175,7 +175,7 @@ public:
                     events.RepeatEvent(1000);
                     break;
                 case EVENT_WEB_WRAP:
-                    me->MonsterTextEmote("%s spins her web into a cocoon!", 0, true);
+                    me->MonsterTextEmote("¡Maexxna gira su telaraña en un capullo!", 0, true);
                     for (uint8 i = 0; i < RAID_MODE(1,2); ++i)
                         if (Unit *target = SelectTarget(SELECT_TARGET_RANDOM, 1, 0, true, -SPELL_WEB_WRAP))
                         {
@@ -233,4 +233,3 @@ void AddSC_boss_maexxna()
     new boss_maexxna();
     new boss_maexxna_webwrap();
 }
-

@@ -101,7 +101,7 @@ public:
             if (!urand(0,3))
             {
                 DoPlaySoundToSet(me, SOUND_SLAY);
-                me->MonsterYell("You should've stayed home!", LANG_UNIVERSAL, 0);
+                me->MonsterYell("¡Deberías de haberte quedado en casa!", LANG_UNIVERSAL, 0);
             }
 
             if (pInstance)
@@ -118,7 +118,7 @@ public:
         void JustDied(Unit* killer)
         {
             DoPlaySoundToSet(me, SOUND_DEATH);
-            me->MonsterYell("An honorable... death...", LANG_UNIVERSAL, 0);
+            me->MonsterYell("Una muerte... honorable...", LANG_UNIVERSAL, 0);
             
             me->CastSpell(me, SPELL_HOPELESS, true);
             if (pInstance)
@@ -131,15 +131,15 @@ public:
             {
                 case 0:
                     DoPlaySoundToSet(me, SOUND_AGGRO_1);
-                    me->MonsterYell("Hah hah, I'm just getting warmed up!", LANG_UNIVERSAL, 0);
+                    me->MonsterYell("¡Ja ja, solo estoy entrando en calor!", LANG_UNIVERSAL, 0);
                     break;
                 case 1:
                     DoPlaySoundToSet(me, SOUND_AGGRO_2);
-                    me->MonsterYell("Stand and fight!", LANG_UNIVERSAL, 0);
+                    me->MonsterYell("¡Aguanta y pelea!", LANG_UNIVERSAL, 0);
                     break;
                 case 2:
                     DoPlaySoundToSet(me, SOUND_AGGRO_3);
-                    me->MonsterYell("Show me what you've got!", LANG_UNIVERSAL, 0);
+                    me->MonsterYell("¡Enseñame de lo que eres capaz!", LANG_UNIVERSAL, 0);
                     break;
             }
 
@@ -183,15 +183,15 @@ public:
                     {
                         case 0:
                             DoPlaySoundToSet(me, SOUND_COMMAND_1);
-                            me->MonsterYell("Do as I taught you!", LANG_UNIVERSAL, 0);
+                            me->MonsterYell("¡Hacedlo como os enseñé!", LANG_UNIVERSAL, 0);
                             break;
                         case 1:
                             DoPlaySoundToSet(me, SOUND_COMMAND_2);
-                            me->MonsterYell("Show them no mercy!", LANG_UNIVERSAL, 0);
+                            me->MonsterYell("¡No mostréis piedad!", LANG_UNIVERSAL, 0);
                             break;
                         case 2:
                             DoPlaySoundToSet(me, SOUND_COMMAND_3);
-                            me->MonsterYell("You disappoint me, students!", LANG_UNIVERSAL, 0);
+                            me->MonsterYell("¡Me decepcionais, estudiantes!", LANG_UNIVERSAL, 0);
                             break;
                     }
                     events.RepeatEvent(40000);

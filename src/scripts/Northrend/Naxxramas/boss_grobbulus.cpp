@@ -138,7 +138,7 @@ public:
                     events.PopEvent();
                     break;
                 case EVENT_SPELL_SLIME_SPRAY:
-                    me->MonsterTextEmote("Grobbulus sprays slime across the room!", 0, true);
+                    me->MonsterTextEmote("¡Grobbulus pulveriza baba por toda la sala!", 0, true);
                     me->CastSpell(me->GetVictim(), RAID_MODE(SPELL_SLIME_SPRAY_10, SPELL_SLIME_SPRAY_25), false);
                     events.RepeatEvent(20000);
                     break;

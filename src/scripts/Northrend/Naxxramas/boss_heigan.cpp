@@ -123,7 +123,7 @@ public:
             }
             else // if (phase == PHASE_FAST_DANCE)
             {
-                me->MonsterTextEmote("%s teleports and begins to channel a spell!", 0, true);
+                me->MonsterTextEmote("¡Heigan el Impuro se teletransporta y canaliza un hechizo!", 0, true);
                 // teleport
                 float x, y, z, o;
                 me->GetHomePosition(x, y, z, o);
