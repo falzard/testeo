@@ -131,7 +131,7 @@ class boss_thekal : public CreatureScript
                             //Thekal will transform to Tiger if he died and was not resurrected after 10 seconds.
                             if (WasDead)
                             {
-                                DoCast(me, SPELL_TIGER_FORM); // SPELL_AURA_TRANSFORM
+                                DoCastSelf(SPELL_TIGER_FORM, true); // SPELL_AURA_TRANSFORM
                                 me->SetObjectScale(2.00f);
                                 me->SetStandState(UNIT_STAND_STATE_STAND);
                                 me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE);
