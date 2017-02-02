@@ -106,7 +106,7 @@ public:
             handler->PSendSysMessage("Jugadores Conectados: %u. Personajes en el mundo: %u. Cola: %u.", activeSessionCount, playerCount, queuedSessionCount);
         //handler->PSendSysMessage("Connection peak: %u.", connPeak);
         handler->PSendSysMessage(LANG_UPTIME, uptime.c_str());
-        handler->PSendSysMessage("Update time diff: %ums, average: %ums.", updateTime, avgUpdateTime);
+        handler->PSendSysMessage("Tiempo de respuesta de actualización: %ums, promedio: %ums.", updateTime, avgUpdateTime);
 
         if (handler->GetSession())
             if (Player* p = handler->GetSession()->GetPlayer())
@@ -355,7 +355,7 @@ public:
             return false;
 
         sWorld->SetRecordDiffInterval(newTime);
-        printf("Record diff every %u ms\n", newTime);
+        printf("Grabación de actualización cada %u ms\n", newTime);
 
         return true;
     }
