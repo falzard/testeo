@@ -23,11 +23,11 @@ void TCSoapRunnable::run()
     soap.send_timeout = 5;
     if (!soap_valid_socket(soap_bind(&soap, _host.c_str(), _port, 100)))
     {
-        sLog->outError("TCSoap: couldn't bind to %s:%d", _host.c_str(), _port);
+        sLog->outError("TCSoap: no se pudo conectar a %s:%d", _host.c_str(), _port);
         exit(-1);
     }
 
-    sLog->outString("TCSoap: bound to http://%s:%d", _host.c_str(), _port);
+    sLog->outString("TCSoap: conectado a http://%s:%d", _host.c_str(), _port);
 
     while (!World::IsStopped())
     {

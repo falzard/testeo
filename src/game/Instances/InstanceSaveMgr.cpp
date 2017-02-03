@@ -426,7 +426,7 @@ void InstanceSaveManager::Update()
     // pussywizard: send updated calendar and raid info
     if (resetOccurred)
     {
-        sLog->outString("Instance ID reset occurred, sending updated calendar and raid info to all players!");
+        sLog->outString("¡Reinicio de IDs de Instancias finalizado, enviando calendario actualizado y información de bandas a todos los jugadores!");
         WorldPacket dummy;
         for (SessionMap::const_iterator itr = sWorld->GetAllSessions().begin(); itr != sWorld->GetAllSessions().end(); ++itr)
             if (Player* plr = itr->second->GetPlayer())
