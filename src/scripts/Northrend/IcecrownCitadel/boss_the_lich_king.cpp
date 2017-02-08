@@ -801,7 +801,7 @@ class boss_the_lich_king : public CreatureScript
                         _bFordringMustFallYell = true;
                         if (Creature* tirion = ObjectAccessor::GetCreature(*me, instance->GetData64(DATA_HIGHLORD_TIRION_FORDRING)))
                         {
-                            tirion->MonsterYell("The Lich King must fall!", LANG_UNIVERSAL, 0);
+                            tirion->MonsterYell("¡El Rey Exánime.. debe, CAER!", LANG_UNIVERSAL, 0);
                             tirion->PlayDirectSound(17389);
                         }
                     }
