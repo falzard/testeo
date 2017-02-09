@@ -184,22 +184,22 @@ public:
                     switch (quest)
                     {
                         case QUEST_BFV_FALLEN_HEROES:
-                            me->MonsterYell("$N has defeated the fallen heroes of Valhalas battles past. This is only a beginning, but it will suffice.", LANG_UNIVERSAL, ObjectAccessor::GetPlayer(*me, playerGUID));
+                            me->MonsterYell("$N ha derrotado a los héroes caídos de las batallas pasadas de Valhalas. Esto es sólo un comienzo, pero será suficiente.", LANG_UNIVERSAL, ObjectAccessor::GetPlayer(*me, playerGUID));
                             break;
                         case QUEST_BFV_DARK_MASTER:
-                            me->MonsterYell("Khit'rix the Dark Master has been defeated by $N and his band of companions. Let the next challenge be issued!", LANG_UNIVERSAL, ObjectAccessor::GetPlayer(*me, playerGUID));
+                            me->MonsterYell("Khit'rix el Maestro Oscuro ha sido derrotado por $N y su banda de compañeros. ¡Que de comienzo el siguiente desafío!", LANG_UNIVERSAL, ObjectAccessor::GetPlayer(*me, playerGUID));
                             break;
                         case QUEST_BFV_SIGRID:
-                            me->MonsterYell("$N has defeated Sigrid Iceborn for a second time. Well, this time he did it with the help of his friends, but a win is a win!", LANG_UNIVERSAL, ObjectAccessor::GetPlayer(*me, playerGUID)); 
+                            me->MonsterYell("$N ha derrotado a Sigrid Hielonato por segunda vez. Bueno, esta vez lo hizo con la ayuda de sus amigos, ¡pero una victoria es una victoria!", LANG_UNIVERSAL, ObjectAccessor::GetPlayer(*me, playerGUID)); 
                             break;
                         case QUEST_BFV_CARNAGE:
-                            me->MonsterYell("The horror known as Carnage is no more. Could it be that $N is truly worthy of battle in Valhalas? We shall see.", LANG_UNIVERSAL, ObjectAccessor::GetPlayer(*me, playerGUID));
+                            me->MonsterYell("El horror conocido como Carnicero ya no lo es mas. ¿Puede ser que $N sea verdaderamente digno de una batalla en Valhalas? Ya lo veremos.", LANG_UNIVERSAL, ObjectAccessor::GetPlayer(*me, playerGUID));
                             break;
                         case QUEST_BFV_THANE:
-                            me->MonsterYell("Thane Banahogg the Deathblow has fallen to $N and his fighting companions. He has but one challenge ahead of him. Who will it be?", LANG_UNIVERSAL, ObjectAccessor::GetPlayer(*me, playerGUID));
+                            me->MonsterYell("Señor feudal Banahogg <Arremetida mortal> ha caído ante $N y sus compañeros de combate. Solo le queda un reto mas. ¿Cual será?", LANG_UNIVERSAL, ObjectAccessor::GetPlayer(*me, playerGUID));
                             break;
                         case QUEST_BFV_FINAL:
-                            me->MonsterYell("The unthinkable has happened... $N has slain Prince Sandoval!", LANG_UNIVERSAL, ObjectAccessor::GetPlayer(*me, playerGUID));
+                            me->MonsterYell("Lo impensable ha sucedido ... ¡$N ha matado al príncipe Sandoval!", LANG_UNIVERSAL, ObjectAccessor::GetPlayer(*me, playerGUID));
                             break;
                     }
 
