@@ -1273,11 +1273,11 @@ void World::SetInitialWorldSettings()
     ///- Initialize detour memory management
     dtAllocSetCustom(dtCustomAlloc, dtCustomFree);
     
-    sLog->outString("Initializing Scripts...");
-    sScriptMgr->Initialize();
-
     ///- Initialize config settings
     LoadConfigSettings();
+
+    sLog->outString("Inicializando Scripts...");
+    sScriptMgr->Initialize();
 
     ///- Initialize Allowed Security Level
     LoadDBAllowedSecurityLevel();
@@ -1307,7 +1307,7 @@ void World::SetInitialWorldSettings()
 
     ///- Loading strings. Getting no records means core load has to be canceled because no error message can be output.
     sLog->outString();
-    sLog->outString("Loading Trinity strings...");
+    sLog->outString("Cargando Trinity strings...");
     if (!sObjectMgr->LoadTrinityStrings())
         exit(1);                                            // Error message displayed in function already
 
@@ -1331,7 +1331,7 @@ void World::SetInitialWorldSettings()
     CharacterDatabase.Execute(stmt);
 
     ///- Load the DBC files
-    sLog->outString("Initialize data stores...");
+    sLog->outString("Inicializando data stores...");
     LoadDBCStores(m_dataPath);
     DetectDBCLang();
 
