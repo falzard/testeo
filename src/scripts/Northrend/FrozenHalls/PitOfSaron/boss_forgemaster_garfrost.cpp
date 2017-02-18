@@ -24,7 +24,7 @@ enum Yells
     EMOTE_DEEP_FREEZE               = 23,
 };
 
-#define EMOTE_THROW_SARONITE        "!%s arroja una enorme roca de saronita sobre ti!"
+#define EMOTE_THROW_SARONITE        "¡%s arroja una enorme roca de saronita sobre ti!"
 
 enum MiscData
 {
