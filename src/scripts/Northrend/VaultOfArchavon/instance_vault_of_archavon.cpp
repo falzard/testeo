@@ -71,7 +71,7 @@ class instance_vault_of_archavon : public InstanceMapScript
                                 if (!PlayerList.isEmpty())
                                     for (Map::PlayerList::const_iterator i = PlayerList.begin(); i != PlayerList.end(); ++i)
                                         if (Player* player = i->GetSource())
-                                            player->MonsterTextEmote("This instance will reset in 15 minutes.", 0, true);
+                                            player->MonsterTextEmote("Esta instancia se reiniciará en 15 minutos.", 0, true);
                             }
                             else if (bf->GetTimer() <= (10 * MINUTE * IN_MILLISECONDS) && bf->GetTimer() >= (9 * MINUTE * IN_MILLISECONDS))
                             {
@@ -95,7 +95,7 @@ class instance_vault_of_archavon : public InstanceMapScript
                                 if (!PlayerList.isEmpty())
                                     for (Map::PlayerList::const_iterator i = PlayerList.begin(); i != PlayerList.end(); ++i)
                                         if (Player* player = i->GetSource())
-                                            player->MonsterTextEmote("This instance is about to reset. Prepare to be removed.", 0, true);
+                                            player->MonsterTextEmote("Esta instancia está a punto de reiniciarse. Preparate para ser expulsado.", 0, true);
                             }
                             else if (bf->GetTimer() <= MINUTE * IN_MILLISECONDS)
                             {

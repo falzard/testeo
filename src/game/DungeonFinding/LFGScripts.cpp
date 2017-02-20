@@ -116,12 +116,14 @@ void LFGPlayerScript::OnMapChanged(Player* player)
     }
     else
     {
+        Group* group = player->GetGroup();
+        if (group && group->GetMembersCount() == 1)
+        {
+            sLFGMgr->LeaveLfg(group->GetGUID());
+            group->Disband();
+                player->GetName().c_str(), player->GetGUID().ToString().c_str());
+        }
         player->RemoveAurasDueToSpell(LFG_SPELL_LUCK_OF_THE_DRAW);
-
-        // Xinef: Destroy group if only one player is left
-        if (Group* group = player->GetGroup())
-            if (group->GetMembersCount() <= 1u)
-                group->Disband();
     }
 }
 
