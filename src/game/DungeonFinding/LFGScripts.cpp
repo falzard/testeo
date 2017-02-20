@@ -121,7 +121,6 @@ void LFGPlayerScript::OnMapChanged(Player* player)
         {
             sLFGMgr->LeaveLfg(group->GetGUID());
             group->Disband();
-                player->GetName().c_str(), player->GetGUID().ToString().c_str());
         }
         player->RemoveAurasDueToSpell(LFG_SPELL_LUCK_OF_THE_DRAW);
     }
