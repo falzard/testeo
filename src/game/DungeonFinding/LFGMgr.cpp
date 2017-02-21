@@ -1905,6 +1905,12 @@ void LFGMgr::TeleportPlayer(Player* player, bool out, bool fromOpcode /*= false*
         if (player->GetMapId() == uint32(dungeon->map))
             player->TeleportToEntryPoint();
 
+        if (group && group->GetMembersCount() == 1)
+        {
+            sLFGMgr->LeaveLfg(player->GetGUID());
+            group->RemoveMember(player->GetGUID());
+        }
+
         return;
     }
 
