@@ -1344,7 +1344,7 @@ enum ReconnaissanceFlight
     VIC_SAY_6       = 6,
     PLANE_EMOTE     = 0,
 
-    AURA_ENGINE     = 52255, // Engine on Fire
+    SPELL_ENGINE     = 52255, // Engine on Fire
 
     SPELL_LAND      = 52226, // Land Flying Machine
     SPELL_CREDIT    = 53328 // Land Flying Machine Credit
@@ -1363,6 +1363,15 @@ public:
         {
             if (apply && passenger->GetTypeId() == TYPEID_PLAYER)
             {
+                Movement::PointsArray pathPoints;
+                pathPoints.push_back(G3D::Vector3(me->GetPositionX(), me->GetPositionY(), me->GetPositionZ()));
+
+                WaypointPath const* i_path = sWaypointMgr->GetPath(NPC_PLANE);
+                for (uint8 i = 0; i < i_path->size(); ++i)
+                {
+                    WaypointData const* node = i_path->at(i);
+                    pathPoints.push_back(G3D::Vector3(node->x, node->y, node->z));
+                }
                 /// @workaround - Because accessory gets unmounted when using vehicle_template_accessory.
                 /// When vehicle spawns accessory is mounted to seat 0,but when player mounts
                 /// he uses the same seat (instead of mounting to seat 1) kicking the accessory out.
