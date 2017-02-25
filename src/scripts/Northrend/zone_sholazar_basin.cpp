@@ -1357,68 +1357,56 @@ public:
 
     struct npc_vics_flying_machineAI : public VehicleAI
     {
-        npc_vics_flying_machineAI(Creature* creature) : VehicleAI(creature)
-        {
-            pointId = 0;
-        }
-
-        uint8 pointId;
+        npc_vics_flying_machineAI(Creature* creature) : VehicleAI(creature) { }
 
         void PassengerBoarded(Unit* passenger, int8 /*seatId*/, bool apply)
         {
             if (apply && passenger->GetTypeId() == TYPEID_PLAYER)
             {
-                Movement::PointsArray pathPoints;
-                pathPoints.push_back(G3D::Vector3(me->GetPositionX(), me->GetPositionY(), me->GetPositionZ()));
-
-                WaypointPath const* i_path = sWaypointMgr->GetPath(NPC_PLANE);
-                for (uint8 i = 0; i < i_path->size(); ++i)
-                {
-                    WaypointData const* node = i_path->at(i);
-                    pathPoints.push_back(G3D::Vector3(node->x, node->y, node->z));
-                }
-
+                /// @workaround - Because accessory gets unmounted when using vehicle_template_accessory.
+                /// When vehicle spawns accessory is mounted to seat 0,but when player mounts
+                /// he uses the same seat (instead of mounting to seat 1) kicking the accessory out.
+                passenger->ChangeSeat(1, false);
+                me->GetVehicleKit()->InstallAccessory(NPC_PILOT, 0, true, TEMPSUMMON_DEAD_DESPAWN, 0);
                 me->GetMotionMaster()->MoveSplinePath(&pathPoints);
             }
         }
 
         void MovementInform(uint32 type, uint32 id)
         {
-            if (type != ESCORT_MOTION_TYPE)
+            if (type != WAYPOINT_MOTION_TYPE)
                 return;
 
-            if (Vehicle* veh = me->GetVehicleKit())
-                if (Unit* pilot = veh->GetPassenger(0))
-                switch (pointId)
+            if (Creature* pilot = GetClosestCreatureWithEntry(me, NPC_PILOT, 10))
+                switch (id)
                 {
                     case 5:
-                        pilot->ToCreature()->AI()->Talk(VIC_SAY_0);
+                        pilot->AI()->Talk(VIC_SAY_0);
                         break;
                     case 11:
-                        pilot->ToCreature()->AI()->Talk(VIC_SAY_1);
+                        pilot->AI()->Talk(VIC_SAY_1);
                         break;
                     case 12:
-                        pilot->ToCreature()->AI()->Talk(VIC_SAY_2);
+                        pilot->AI()->Talk(VIC_SAY_2);
                         break;
                     case 14:
-                        pilot->ToCreature()->AI()->Talk(VIC_SAY_3);
+                        pilot->AI()->Talk(VIC_SAY_3);
                         break;
                     case 15:
-                        pilot->ToCreature()->ToCreature()->AI()->Talk(VIC_SAY_4);
+                        pilot->AI()->Talk(VIC_SAY_4);
                         break;
                     case 17:
-                        pilot->ToCreature()->AI()->Talk(VIC_SAY_5);
+                        pilot->AI()->Talk(VIC_SAY_5);
                         break;
                     case 21:
-                        pilot->ToCreature()->AI()->Talk(VIC_SAY_6);
+                        pilot->AI()->Talk(VIC_SAY_6);
                         break;
                     case 25:
                         Talk(PLANE_EMOTE);
-                        DoCast(AURA_ENGINE);
+                        DoCast(SPELL_ENGINE);
                         me->SetFlag(UNIT_FIELD_FLAGS_2, UNIT_FLAG2_FORCE_MOVEMENT);
                         break;
                 }
-            pointId++;
         }
 
         void SpellHit(Unit* /*caster*/, SpellInfo const* spell)
@@ -1427,11 +1415,14 @@ public:
             {
                 Unit* passenger = me->GetVehicleKit()->GetPassenger(1); // player should be on seat 1
                 if (passenger && passenger->GetTypeId() == TYPEID_PLAYER)
+                {
                     passenger->CastSpell(passenger, SPELL_CREDIT, true);
-
-                me->DespawnOrUnsummon();
+                    passenger->ExitVehicle();
+                }
             }
         }
+        
+        void UpdateAI(uint32 /*diff*/) { }
     };
 
     CreatureAI* GetAI(Creature* creature) const
