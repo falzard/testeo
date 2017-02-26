@@ -1344,7 +1344,7 @@ enum ReconnaissanceFlight
     VIC_SAY_6       = 6,
     PLANE_EMOTE     = 0,
 
-    SPELL_ENGINE     = 52255, // Engine on Fire
+    AURA_ENGINE     = 52255, // Engine on Fire
 
     SPELL_LAND      = 52226, // Land Flying Machine
     SPELL_CREDIT    = 53328 // Land Flying Machine Credit
@@ -1357,7 +1357,12 @@ public:
 
     struct npc_vics_flying_machineAI : public VehicleAI
     {
-        npc_vics_flying_machineAI(Creature* creature) : VehicleAI(creature) { }
+        npc_vics_flying_machineAI(Creature* creature) : VehicleAI(creature) 
+        { 
+            pointId = 0;
+        }
+
+        uint8 pointId;
 
         void PassengerBoarded(Unit* passenger, int8 /*seatId*/, bool apply)
         {
@@ -1386,36 +1391,38 @@ public:
             if (type != WAYPOINT_MOTION_TYPE)
                 return;
 
-            if (Creature* pilot = GetClosestCreatureWithEntry(me, NPC_PILOT, 10))
-                switch (id)
+            if (Vehicle* veh = me->GetVehicleKit())
+                if (Unit* pilot = veh->GetPassenger(0))
+                switch (pointId)
                 {
                     case 5:
-                        pilot->AI()->Talk(VIC_SAY_0);
+                        pilot->ToCreature()->AI()->Talk(VIC_SAY_0);
                         break;
                     case 11:
-                        pilot->AI()->Talk(VIC_SAY_1);
+                        pilot->ToCreature()->AI()->Talk(VIC_SAY_1);
                         break;
                     case 12:
-                        pilot->AI()->Talk(VIC_SAY_2);
+                        pilot->ToCreature()->AI()->Talk(VIC_SAY_2);
                         break;
                     case 14:
-                        pilot->AI()->Talk(VIC_SAY_3);
+                        pilot->ToCreature()->AI()->Talk(VIC_SAY_3);
                         break;
                     case 15:
-                        pilot->AI()->Talk(VIC_SAY_4);
+                        pilot->ToCreature()->ToCreature()->AI()->Talk(VIC_SAY_4);
                         break;
                     case 17:
-                        pilot->AI()->Talk(VIC_SAY_5);
+                        pilot->ToCreature()->AI()->Talk(VIC_SAY_5);
                         break;
                     case 21:
-                        pilot->AI()->Talk(VIC_SAY_6);
+                        pilot->ToCreature()->AI()->Talk(VIC_SAY_6);
                         break;
                     case 25:
                         Talk(PLANE_EMOTE);
-                        DoCast(SPELL_ENGINE);
+                        DoCast(AURA_ENGINE);
                         me->SetFlag(UNIT_FIELD_FLAGS_2, UNIT_FLAG2_FORCE_MOVEMENT);
                         break;
                 }
+            pointId++;
         }
 
         void SpellHit(Unit* /*caster*/, SpellInfo const* spell)
