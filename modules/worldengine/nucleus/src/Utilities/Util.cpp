@@ -129,13 +129,13 @@ std::string secsToTimeString(uint64 timeInSecs, bool shortText)
 
     std::ostringstream ss;
     if (days)
-        ss << days << (shortText ? "d" : " day(s) ");
+        ss << days << (shortText ? "d" : " dia(s) ");
     if (hours)
-        ss << hours << (shortText ? "h" : " hour(s) ");
+        ss << hours << (shortText ? "h" : " hora(s) ");
     if (minutes)
-        ss << minutes << (shortText ? "m" : " minute(s) ");
+        ss << minutes << (shortText ? "m" : " minuto(s) ");
     if (secs || (!days && !hours && !minutes) )
-        ss << secs << (shortText ? "s" : " second(s) ");
+        ss << secs << (shortText ? "s" : " segundo(s) ");
 
     std::string str = ss.str();
 
@@ -149,8 +149,8 @@ int32 MoneyStringToMoney(const std::string& moneyString)
 {
     int32 money = 0;
 
-    if (!(std::count(moneyString.begin(), moneyString.end(), 'g') == 1 ||
-        std::count(moneyString.begin(), moneyString.end(), 's') == 1 ||
+    if (!(std::count(moneyString.begin(), moneyString.end(), 'o') == 1 ||
+        std::count(moneyString.begin(), moneyString.end(), 'p') == 1 ||
         std::count(moneyString.begin(), moneyString.end(), 'c') == 1))
         return 0; // Bad format
 
@@ -158,8 +158,8 @@ int32 MoneyStringToMoney(const std::string& moneyString)
     for (Tokenizer::const_iterator itr = tokens.begin(); itr != tokens.end(); ++itr)
     {
         std::string tokenString(*itr);
-        size_t gCount = std::count(tokenString.begin(), tokenString.end(), 'g');
-        size_t sCount = std::count(tokenString.begin(), tokenString.end(), 's');
+        size_t gCount = std::count(tokenString.begin(), tokenString.end(), 'o');
+        size_t sCount = std::count(tokenString.begin(), tokenString.end(), 'p');
         size_t cCount = std::count(tokenString.begin(), tokenString.end(), 'c');
         if (gCount + sCount + cCount != 1)
             return 0;
