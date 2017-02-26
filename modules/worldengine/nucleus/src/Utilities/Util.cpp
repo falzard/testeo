@@ -129,7 +129,7 @@ std::string secsToTimeString(uint64 timeInSecs, bool shortText)
 
     std::ostringstream ss;
     if (days)
-        ss << days << (shortText ? "d" : " dia(s) ");
+        ss << days << (shortText ? "d" : " día(s) ");
     if (hours)
         ss << hours << (shortText ? "h" : " hora(s) ");
     if (minutes)
