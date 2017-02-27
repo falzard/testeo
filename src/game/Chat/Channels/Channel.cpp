@@ -791,7 +791,7 @@ void Channel::Say(uint64 guid, std::string const& what, uint32 lang)
             std::string timeStr = secsToTimeString(pinfo.lastSpeakTime + speakDelay - sWorld->GetGameTime());
             if (_channelRights.speakMessage.length() > 0)
                 player->GetSession()->SendNotification(_channelRights.speakMessage.c_str());
-            player->GetSession()->SendNotification("Debes esperar %s para volver a enviar un mensaje.", timeStr.c_str());
+            player->GetSession()->SendNotification("Espera %s para enviar otro mensaje.", timeStr.c_str());
             return;
         }
     }
