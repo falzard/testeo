@@ -1416,7 +1416,6 @@ public:
                         pilot->ToCreature()->AI()->Talk(VIC_SAY_6);
                         break;
                     case 25:
-                        Talk(PLANE_EMOTE);
                         DoCast(AURA_ENGINE);
                         me->SetFlag(UNIT_FIELD_FLAGS_2, UNIT_FLAG2_FORCE_MOVEMENT);
                         break;
