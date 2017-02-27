@@ -1391,8 +1391,7 @@ public:
             if (type != WAYPOINT_MOTION_TYPE)
                 return;
 
-            if (Vehicle* veh = me->GetVehicleKit())
-                if (Unit* pilot = veh->GetPassenger(0))
+            if (Creature* pilot = GetClosestCreatureWithEntry(me, NPC_PILOT, 10))
                 switch (pointId)
                 {
                     case 5:
