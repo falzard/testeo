@@ -1379,7 +1379,6 @@ public:
                 me->GetVehicleKit()->InstallAccessory(NPC_PILOT, 0, true, TEMPSUMMON_DEAD_DESPAWN, 0);
                 me->GetMotionMaster()->MoveSplinePath(&pathPoints);
             }
-            DoCastSelf(AURA_ENGINE);
         }
 
         void MovementInform(uint32 type, uint32 id)
