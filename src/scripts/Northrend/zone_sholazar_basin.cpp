@@ -1378,8 +1378,8 @@ public:
                 passenger->ChangeSeat(1, false);
                 me->GetVehicleKit()->InstallAccessory(NPC_PILOT, 0, true, TEMPSUMMON_DEAD_DESPAWN, 0);
                 me->GetMotionMaster()->MoveSplinePath(&pathPoints);
-                DoCastSelf(AURA_ENGINE);
             }
+            DoCastSelf(AURA_ENGINE);
         }
 
         void MovementInform(uint32 type, uint32 id)
@@ -1388,7 +1388,7 @@ public:
                 return;
 
             if (Creature* pilot = GetClosestCreatureWithEntry(me, NPC_PILOT, 10))
-                switch (pointId)
+                switch (id)
                 {
                     case 5:
                         pilot->ToCreature()->AI()->Talk(VIC_SAY_0);
@@ -1412,12 +1412,11 @@ public:
                         pilot->ToCreature()->AI()->Talk(VIC_SAY_6);
                         break;
                     case 25:
-                        Talk(PLANE_EMOTE);
                         DoCast(AURA_ENGINE);
+                        Talk(PLANE_EMOTE);
                         me->SetFlag(UNIT_FIELD_FLAGS_2, UNIT_FLAG2_FORCE_MOVEMENT);
                         break;
                 }
-            pointId++;
         }
 
         void SpellHit(Unit* /*caster*/, SpellInfo const* spell)
