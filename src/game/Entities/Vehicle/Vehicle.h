@@ -33,6 +33,7 @@ class Vehicle : public TransportBase
         Unit* GetPassenger(int8 seatId) const;
         int8 GetNextEmptySeat(int8 seatId, bool next) const;
         uint8 GetAvailableSeatCount() const;
+        bool HasPendingEventForSeat(int8 seatId) const;
 
         bool AddPassenger(Unit* passenger, int8 seatId = -1);
         void EjectPassenger(Unit* passenger, Unit* controller);

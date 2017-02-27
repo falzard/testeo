@@ -230,7 +230,7 @@ int8 Vehicle::GetNextEmptySeat(int8 seatId, bool next) const
     if (seat == Seats.end())
         return -1;
 
-    while (!seat->second.IsEmpty() || (!seat->second.SeatInfo->CanEnterOrExit() && !seat->second.SeatInfo->IsUsableByOverride()))
+    while (!seat->second.IsEmpty() || HasPendingEventForSeat(seat->first) || (!seat->second.SeatInfo->CanEnterOrExit() && !seat->second.SeatInfo->IsUsableByOverride()))
     {
         if (next)
         {
@@ -313,7 +313,7 @@ bool Vehicle::AddPassenger(Unit* unit, int8 seatId)
     if (seatId < 0) // no specific seat requirement
     {
         for (seat = Seats.begin(); seat != Seats.end(); ++seat)
-            if (seat->second.IsEmpty() && (seat->second.SeatInfo->CanEnterOrExit() || seat->second.SeatInfo->IsUsableByOverride()))
+            if (seat->second.IsEmpty() && !HasPendingEventForSeat(seat->first) && (seat->second.SeatInfo->CanEnterOrExit() || seat->second.SeatInfo->IsUsableByOverride()))
                 break;
 
         if (seat == Seats.end()) // no available seat
@@ -584,8 +584,18 @@ uint8 Vehicle::GetAvailableSeatCount() const
     uint8 ret = 0;
     SeatMap::const_iterator itr;
     for (itr = Seats.begin(); itr != Seats.end(); ++itr)
-        if (itr->second.IsEmpty() && (itr->second.SeatInfo->CanEnterOrExit() || itr->second.SeatInfo->IsUsableByOverride()))
+        if (itr->second.IsEmpty() && !HasPendingEventForSeat(itr->first) && (itr->second.SeatInfo->CanEnterOrExit() || itr->second.SeatInfo->IsUsableByOverride()))
             ++ret;
 
     return ret;
+}
+
+bool Vehicle::HasPendingEventForSeat(int8 seatId) const
+{
+    for (PendingJoinEventContainer::const_iterator itr = _pendingJoinEvents.begin(); itr != _pendingJoinEvents.end(); ++itr)
+    {
+        if ((*itr)->Seat->first == seatId)
+            return true;
+    }
+    return false;
 }
