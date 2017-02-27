@@ -1396,25 +1396,25 @@ public:
                 switch (pointId)
                 {
                     case 5:
-                        pilot->ToCreature()->AI()->Talk(VIC_SAY_0);
+                        pilot->AI()->Talk(VIC_SAY_0);
                         break;
                     case 11:
-                        pilot->ToCreature()->AI()->Talk(VIC_SAY_1);
+                        pilot->AI()->Talk(VIC_SAY_1);
                         break;
                     case 12:
-                        pilot->ToCreature()->AI()->Talk(VIC_SAY_2);
+                        pilot->AI()->Talk(VIC_SAY_2);
                         break;
                     case 14:
-                        pilot->ToCreature()->AI()->Talk(VIC_SAY_3);
+                        pilot->AI()->Talk(VIC_SAY_3);
                         break;
                     case 15:
-                        pilot->ToCreature()->ToCreature()->AI()->Talk(VIC_SAY_4);
+                        pilot->AI()->Talk(VIC_SAY_4);
                         break;
                     case 17:
-                        pilot->ToCreature()->AI()->Talk(VIC_SAY_5);
+                        pilot->AI()->Talk(VIC_SAY_5);
                         break;
                     case 21:
-                        pilot->ToCreature()->AI()->Talk(VIC_SAY_6);
+                        pilot->AI()->Talk(VIC_SAY_6);
                         break;
                     case 25:
                         Talk(PLANE_EMOTE);
