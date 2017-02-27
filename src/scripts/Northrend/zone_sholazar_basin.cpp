@@ -1357,7 +1357,12 @@ public:
 
     struct npc_vics_flying_machineAI : public VehicleAI
     {
-        npc_vics_flying_machineAI(Creature* creature) : VehicleAI(creature) { }
+        npc_vics_flying_machineAI(Creature* creature) : VehicleAI(creature) 
+        { 
+            pointId = 0;
+        }
+
+        uint8 pointId;
 
         void PassengerBoarded(Unit* passenger, int8 /*seatId*/, bool apply)
         {
@@ -1386,8 +1391,9 @@ public:
             if (type != WAYPOINT_MOTION_TYPE)
                 return;
 
-            if (Creature* pilot = GetClosestCreatureWithEntry(me, NPC_PILOT, 10))
-                switch (id)
+            if (Vehicle* veh = me->GetVehicleKit())
+                if (Unit* pilot = veh->GetPassenger(0))
+                switch (pointId)
                 {
                     case 5:
                         pilot->ToCreature()->AI()->Talk(VIC_SAY_0);
@@ -1416,6 +1422,7 @@ public:
                         me->SetFlag(UNIT_FIELD_FLAGS_2, UNIT_FLAG2_FORCE_MOVEMENT);
                         break;
                 }
+            pointId++;
         }
 
         void SpellHit(Unit* /*caster*/, SpellInfo const* spell)
