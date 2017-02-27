@@ -1357,12 +1357,7 @@ public:
 
     struct npc_vics_flying_machineAI : public VehicleAI
     {
-        npc_vics_flying_machineAI(Creature* creature) : VehicleAI(creature) 
-        { 
-            pointId = 0;
-        }
-
-        uint8 pointId;
+        npc_vics_flying_machineAI(Creature* creature) : VehicleAI(creature) { }
 
         void PassengerBoarded(Unit* passenger, int8 /*seatId*/, bool apply)
         {
@@ -1383,6 +1378,7 @@ public:
                 passenger->ChangeSeat(1, false);
                 me->GetVehicleKit()->InstallAccessory(NPC_PILOT, 0, true, TEMPSUMMON_DEAD_DESPAWN, 0);
                 me->GetMotionMaster()->MoveSplinePath(&pathPoints);
+                DoCastSelf(AURA_ENGINE);
             }
         }
 
@@ -1416,6 +1412,7 @@ public:
                         pilot->ToCreature()->AI()->Talk(VIC_SAY_6);
                         break;
                     case 25:
+                        Talk(PLANE_EMOTE);
                         DoCast(AURA_ENGINE);
                         me->SetFlag(UNIT_FIELD_FLAGS_2, UNIT_FLAG2_FORCE_MOVEMENT);
                         break;
