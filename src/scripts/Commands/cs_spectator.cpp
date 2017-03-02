@@ -36,8 +36,8 @@ public:
 
     static bool HandleSpectatorCommand(ChatHandler* handler, char const* args)
     {
-        handler->PSendSysMessage("Incorrect syntax.");
-        handler->PSendSysMessage("Command has subcommands:");
+        handler->PSendSysMessage("Sintaxis incorrecta.");
+        handler->PSendSysMessage("La orden tiene subordenes:");
         handler->PSendSysMessage("   spectate");
         handler->PSendSysMessage("   leave");
         return true;
@@ -64,7 +64,7 @@ public:
         Player* player = handler->GetSession()->GetPlayer();
         if (!player->IsSpectator() || !player->FindMap() || !player->FindMap()->IsBattleArena())
         {
-            handler->SendSysMessage("You are not a spectator.");
+            handler->SendSysMessage("¡No eres un espectador!");
             return true;
         }
 
@@ -80,7 +80,7 @@ bool ArenaSpectator::HandleSpectatorSpectateCommand(ChatHandler* handler, char c
     std::list<std::string> errors;
     if (!*args)
     {
-        handler->SendSysMessage("Missing player name.");
+        handler->SendSysMessage("Falta el nombre del jugador: .spect spectate NombreJugador.");
         return true;
     }
     if (player->IsSpectator())
@@ -90,12 +90,12 @@ bool ArenaSpectator::HandleSpectatorSpectateCommand(ChatHandler* handler, char c
             HandleSpectatorWatchCommand(handler, args);
             return true;
         }
-        handler->PSendSysMessage("You are already spectacting arena.");
+        handler->PSendSysMessage("Ya estas observando una arena.");
         return true;
     }
     if (player->getClass() == CLASS_DEATH_KNIGHT && player->GetMapId() == 609)
     {
-        handler->PSendSysMessage("Death Knights can't spectate before finishing questline.");
+        handler->PSendSysMessage("¡Los Caballeros de la Muerte no pueden observar Arenas hasta acabar la cadena de misiones!");
         return true;
     }
 
@@ -103,36 +103,36 @@ bool ArenaSpectator::HandleSpectatorSpectateCommand(ChatHandler* handler, char c
     Player* spectate = ObjectAccessor::FindPlayerByName(name);
     if (!spectate)
     {
-        handler->SendSysMessage("Requested player not found.");
+        handler->SendSysMessage("Jugador solicitado no encontrado.");
         return true;
     }
     if (spectate->IsSpectator())
     {
-        handler->SendSysMessage("Requested player is a spectator.");
+        handler->SendSysMessage("El jugador solicitado es un espectador.");
         return true;
     }
     if (!spectate->FindMap() || !spectate->FindMap()->IsBattleArena())
     {
-        handler->SendSysMessage("Requested player is not in arena.");
+        handler->SendSysMessage("El jugador solicitado no esta en la Arena.");
         return true;
     }
     BattlegroundMap* bgmap = ((BattlegroundMap*)spectate->FindMap());
     if (!bgmap->GetBG() || bgmap->GetBG()->GetStatus() == STATUS_WAIT_LEAVE)
     {
-        handler->SendSysMessage("This arena battle has finished.");
+        handler->SendSysMessage("¡Esta batalla en la arena ha finalizado!");
         return true;
     }
 
     if (player->IsBeingTeleported() || !player->IsInWorld())
-        errors.push_back("Can't use while being teleported.");
+        errors.push_back("No puedes usar este comando mientras estas siendo teletransportado.");
     if (!player->FindMap() || player->FindMap()->Instanceable())
-        errors.push_back("Can't use while in instance, bg or arena.");
+        errors.push_back("No puedes usar este comando mientras estas en BG, Arena o Instancia.");
     if (player->GetVehicle())
-        errors.push_back("Can't be on a vehicle.");
+        errors.push_back("¡No puedes estar en un vehículo mientras ejecutas este comando!");
     if (player->IsInCombat())
-        errors.push_back("Can't be in combat.");
+        errors.push_back("¡No puedes estar en combate mientras ejecutas este comando!");
     if (player->isUsingLfg())
-        errors.push_back("Can't spectate while using LFG system.");
+        errors.push_back("¡No puedes ser un espectador de Arenas mientras estás en cola para el Buscador de Mazmorras!");
     if (player->InBattlegroundQueue())
         errors.push_back("Can't be queued for arena or bg.");
     if (player->GetGroup())
@@ -144,11 +144,11 @@ bool ArenaSpectator::HandleSpectatorSpectateCommand(ChatHandler* handler, char c
     if (player->IsInFlight())
         errors.push_back("Can't be in flight.");
     if (player->IsMounted())
-        errors.push_back("Dismount before spectating.");
+        errors.push_back("¡Desmontate para poder ser espectador!");
     if (!player->IsAlive())
-        errors.push_back("Must be alive.");
+        errors.push_back("¡Debes de estar vivo para ejecutar este comando!");
     if (!player->m_Controlled.empty())
-        errors.push_back("Can't be controlling creatures.");
+        errors.push_back("¡No puedes hacer esto mientras controlas una criatura!");
 
     const Unit::VisibleAuraMap* va = player->GetVisibleAuras();
     for (Unit::VisibleAuraMap::const_iterator itr = va->begin(); itr != va->end(); ++itr)
@@ -168,7 +168,7 @@ bool ArenaSpectator::HandleSpectatorSpectateCommand(ChatHandler* handler, char c
                         continue;
                 }
 
-                errors.push_back("Can't have negative auras.");
+                errors.push_back("¡No puedes usar el comando mientras tengas auras negativas!");
                 break;
             }
 
@@ -184,7 +184,7 @@ bool ArenaSpectator::HandleSpectatorSpectateCommand(ChatHandler* handler, char c
         handler->GetSession()->GetSecurity() && bgmap->GetBG()->GetStatus() != STATUS_WAIT_JOIN && bgmap->GetBG()->GetStatus() != STATUS_IN_PROGRESS)
     {
         bgPreparation = true;
-        handler->SendSysMessage("Arena is not in progress yet. You will be invited as soon as it starts.");
+        handler->SendSysMessage("La Arena todavía no ha comenzado. Serás invitado en cuanto comience.");
         bgmap->GetBG()->AddToBeTeleported(player->GetGUID(), spectate->GetGUID());
         player->SetPendingSpectatorInviteInstanceId(spectate->GetBattlegroundId());
     }
