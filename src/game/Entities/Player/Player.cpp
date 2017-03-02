@@ -7251,7 +7251,7 @@ bool Player::RewardHonor(Unit* uVictim, uint32 groupsize, int32 honor, bool awar
                 uint32 killer_title = 0;
                 if (PLAYER_TITLE_MASK_ALL_PVP & ktitle)
                 {
-                    for (int i = ((GetTeam() == ALLIANCE) ? 1:HKRANKMAX);i!=((GetTeam() == ALLIANCE) ? HKRANKMAX : (2*HKRANKMAX-1));i++)
+                    for (int i = ((GetTeamId() == ALLIANCE) ? 1:HKRANKMAX);i!=((GetTeamId() == ALLIANCE) ? HKRANKMAX : (2*HKRANKMAX-1));i++)
                     {
                         if (ktitle & (1<<i))
                             killer_title = i;
@@ -7259,7 +7259,7 @@ bool Player::RewardHonor(Unit* uVictim, uint32 groupsize, int32 honor, bool awar
                 }
                 if (PLAYER_TITLE_MASK_ALL_PVP & vtitle)
                 {
-                    for (int i = ((plrVictim->GetTeam() == ALLIANCE) ? 1:HKRANKMAX);i!=((plrVictim->GetTeam() == ALLIANCE) ? HKRANKMAX : (2*HKRANKMAX-1));i++)
+                    for (int i = ((victim->GetTeamId() == ALLIANCE) ? 1:HKRANKMAX);i!=((victim->GetTeamId() == ALLIANCE) ? HKRANKMAX : (2*HKRANKMAX-1));i++)
                     {
                         if (vtitle & (1<<i))
                             victim_title = i;
@@ -7272,13 +7272,13 @@ bool Player::RewardHonor(Unit* uVictim, uint32 groupsize, int32 honor, bool awar
                 //  title[15..28] -> rank[5..18]
                 //  title[other]  -> 0
                 if (victim_title == 0)
-                    victim_guid.Clear();                        // Don't show HK: <rank> message, only log.
+                    victim_guid = 0;                        // Don't show HK: <rank> message, only log.
                 else if (victim_title < HKRANKMAX)
                     victim_rank = victim_title + 4;
                 else if (victim_title < (2*HKRANKMAX-1))
                     victim_rank = victim_title - (HKRANKMAX-1) + 4;
                 else
-                    victim_guid.Clear();                        // Don't show HK: <rank> message, only log.
+                    victim_guid = 0;                        // Don't show HK: <rank> message, only log.
 
                 // now find rank difference
                 if (killer_title == 0 && victim_rank>4)
@@ -7391,7 +7391,7 @@ void Player::UpdateKnownTitles()
         {
             new_title = ((max_rank) ? (HKRANKMAX-1) : (i-1));
             if (new_title > 0)
-                new_title += ((GetTeam() == ALLIANCE) ? 0 : (HKRANKMAX-1));
+                new_title += ((GetTeamId() == ALLIANCE) ? 0 : (HKRANKMAX-1));
             break;
         }
     }
