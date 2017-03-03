@@ -83,7 +83,7 @@ static Position SkadiPosition[] =
     {490.76f, -517.389f, 123.368f}
 };
 
-#define EMOTE_IN_RANGE   "Skadi the Ruthless is within range of the harpoon launchers"
+#define EMOTE_IN_RANGE   "¡Skadi el Despiadado está dentro del alcance de los Lanzaarpones!"
 
 enum phase
 {
