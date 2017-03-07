@@ -214,20 +214,20 @@ extern int main(int argc, char** argv)
             ULONG_PTR currentAffinity = affinity & appAff;
             
             if (!currentAffinity)
-                sLog->outError("server.authserver", "Processors marked in UseProcessors bitmask (hex) %x are not accessible for the authserver. Accessible processors bitmask (hex): %x", affinity, appAff);
+                sLog->outError("Processors marked in UseProcessors bitmask (hex) %x are not accessible for the authserver. Accessible processors bitmask (hex): %x", affinity, appAff);
             else if (SetProcessAffinityMask(hProcess, currentAffinity))
-                sLog->outString("server.authserver", "Using processors (bitmask, hex): %x", currentAffinity);
+                sLog->outString("Using processors (bitmask, hex): %x", currentAffinity);
             else
-                sLog->outError("server.authserver", "Can't set used processors (hex): %x", currentAffinity);
+                sLog->outError("Can't set used processors (hex): %x", currentAffinity);
         }
     }
     
     if (highPriority)
     {
         if (SetPriorityClass(hProcess, HIGH_PRIORITY_CLASS))
-            sLog->outString("server.authserver", "authserver process priority class set to HIGH");
+            sLog->outString("authserver process priority class set to HIGH");
         else
-            sLog->outError("server.authserver", "Can't set authserver process priority class.");
+            sLog->outError("Can't set authserver process priority class.");
     }
     
 #else // Linux
